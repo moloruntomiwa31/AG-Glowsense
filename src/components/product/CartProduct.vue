@@ -1,0 +1,49 @@
+<template>
+    <div v-if="filteredProducts.length > 0"
+    class="p-5 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 productWrapper">
+        <div class="text-[#EDEDED] product p-4 gap-4 flex flex-col items-start justify-around shadow md:space-y-0 bg-[#6C4A4A]"
+            v-for="product in filteredProducts">
+            <img :src="product.image" alt="Product Image" class="rounded-t product-image" width="300" height="400">
+            <h3 class="capitalize font-bold text-lg">{{ product.name }}</h3>
+            <p class="font-bold">Price - ₦{{ product.price }}</p>
+            <Star />
+            <Button @click="router.push(`/products/${product.id}`)"
+                class="capitalize text-lg text-black bg-[#C89595] p-2 hover:bg-red-400 duration-150 whitespace-nowrap outline-none">
+                Check Details
+            </Button>
+        </div>
+    </div>
+    <div v-else class="min-h-[80vh] w-full">
+        <h1 class="text-[3rem] text-center">No Results Found</h1>
+    </div>
+</template>
+
+<script setup>
+import Star from '../home/Star.vue';
+import Button from '../fixed/Button.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+defineProps(['filteredProducts'])
+</script>
+
+<style scoped>
+.productWrapper {
+    grid-gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+}
+
+.product {
+    max-height: 500px;
+    height: 100%;
+    margin-bottom: 0.4rem;
+    max-width: 200px;
+}
+
+.product-image {
+    width: 100%;
+    height: 50%;
+    object-fit: contain;
+}
+</style>
