@@ -1,17 +1,22 @@
-import image1 from "../src/assets/products/product8.jpg";
-import image2 from "../src/assets/products/product9.jpg";
+import image1 from "../src/assets/products/bodyScrub.jpg";
+import image2 from "../src/assets/products/organicBodyButter.jpg";
 import image3 from "../src/assets/products/product1.avif";
 import image4 from "../src/assets/products/product2.avif";
 import image5 from "../src/assets/products/product3.avif";
 import image6 from "../src/assets/products/product4.avif";
 import image7 from "../src/assets/products/product5.avif";
-// import image8 from "../src/assets/products/bodyScrub.jpg"
-// import image9 from "../src/assets/products/organicBodyButter.jpg"
-// import image10 from "../src/assets/products/skinRepairOil.jpg"
+import carrot from "../src/assets/products/bodyScrub.jpg"
+import fruity from "../src/assets/products/fruityBodyScrub.jpg"
+import faceCleanser from "../src/assets/products/faceCleanser.jpg"
+import herbalShampoo from "../src/assets/products/herbalShampoo.jpg"
+import vivePack from "../src/assets/products/vivePack.jpg"
+import hairButter from "../src/assets/products/hairButter.jpg"
+import hairBoosterOil from "../src/assets/products/hairBooster.jpg"
+
 const data = [
   {
     id: Math.round(Math.random() * 1000),
-    image: "../src/assets/products/bodyScrub.jpg",
+    image: carrot,
     name: "Carrot and Sugar Scrub",
     ingredients: "Carrot, sugar",
     product_type: "bodywash",
@@ -23,7 +28,7 @@ const data = [
   },
   {
     id: Math.round(Math.random() * 1000),
-    image: "../src/assets/products/fruityBodyScrub.jpg",
+    image: fruity,
     name: "Fruity Body Scrub",
     ingredients: "Lemon and Aloe Vera",
     product_type: "bodywash",
@@ -35,7 +40,7 @@ const data = [
   },
   {
     id: Math.round(Math.random() * 1000),
-    image: "../src/assets/products/faceCleanser.jpg",
+    image: faceCleanser,
     name: "Face Cleanser",
     ingredients: "Salicylic acid and Vitamin A",
     product_type: "facewash",
@@ -134,7 +139,7 @@ const data = [
   },
   {
     id: "8",
-    image: "../src/assets/products/herbalShampoo.jpg",
+    image: herbalShampoo,
     name: "Herbal hair repair shampoo",
     ingredients: "African black soap, distilled water, sunflower oil extract.",
     product_type: "vive",
@@ -145,7 +150,7 @@ const data = [
   },
   {
     id: "9",
-    image: "../src/assets/products/vivePack.jpg",
+    image: vivePack,
     name: "Hair food",
     ingredients: "Jamaican black closter oil, Vitamin E, Green tea extract",
     product_type: "vive",
@@ -158,7 +163,7 @@ const data = [
   },
   {
     id: "10",
-    image: "../src/assets/products/hairButter.jpg",
+    image: hairButter,
     name: "Herbal hair butter",
     ingredients: "Shea butter, cocoa butter, Organic herbs, and oils",
     product_type: "vive",
@@ -169,7 +174,7 @@ const data = [
   },
   {
     id: "11",
-    image: "../src/assets/products/hairBooster.jpg",
+    image: hairBoosterOil,
     name: "Hair booster oil",
     ingredients: "Avocado oil, Almond oil, coster oil, vitamin E, coconut oil.",
     product_type: "vive",

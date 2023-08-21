@@ -15,6 +15,7 @@
         </div>
     </main>
     <div v-else class="min-h-[100vh] flex flex-col gap-4 justify-center items-center">
+        <img src="../assets/cart-cross-outline.svg" alt="" class="w-[20%]">
         <h1 class="capitalize text-[3rem] text-[#463333] text-center">Cart is Empty</h1>
         <div>
             <Button class="bg-red-300 p-2 shadow" @click="router.push(`/products`)">Go Back</Button>

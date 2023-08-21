@@ -26,7 +26,7 @@
             <Swiper :modules="[EffectCube, Pagination, Autoplay]" :cube-effect="{
                 shadow: false
             }" :autoplay="{
-    delay: 3000,
+    delay: 2000,
     disableOnInteraction: false
 }" effect="card" :loop="true" :pagination="{
     dynamicBullets: true
@@ -58,7 +58,6 @@ import 'swiper/css';
 
 import icon1 from '../assets/muse.jpg'
 import icon2 from '../assets/lipbalm.jpg'
-import icon3 from '../assets/applyMoisture.jpg'
 import icon4 from '../assets/museHands.jpg'
 import icon5 from '../assets/face-mask.jpg'
 
@@ -82,7 +81,7 @@ onMounted(() => {
 
 const { scrollTosection } = useScroll()
 const photos = [
-    icon1, icon2, icon3, icon4, icon5
+    icon1, icon2, icon4, icon5
 ]
 
 </script>
@@ -134,5 +133,8 @@ const photos = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.swiper-pagination-bullet-active {
+    color: red;
 }
 </style>

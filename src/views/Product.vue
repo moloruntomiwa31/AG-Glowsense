@@ -2,7 +2,7 @@
     <PreLoader v-if="isLoading" />
     <main class="space-y-8 md:space-y-0 md:p-2" v-else>
         <div class="w-full my-4">
-            <h1 class="text-[2rem] font-bold capitalize text-center text-[#463333]">Some of our Products</h1>
+            <h1 class="text-[2rem] font-bold capitalize text-center text-[#463333]">Available Products</h1>
         </div>
         <!-- search box -->
         <div class="flex flex-col md:flex-row gap-4 justify-center items-center md:justify-between md:px-8">
