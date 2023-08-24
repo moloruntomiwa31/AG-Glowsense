@@ -7,7 +7,6 @@ export const useStore = defineStore("cartStore", {
   state: () => ({
     cart: [],
     pricesOfData: [],
-    totalPrice: 0,
     idOfPreviousProductPage: null,
   }),
   getters: {

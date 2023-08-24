@@ -1,9 +1,17 @@
 <template>
     <main class="min-h-[80vh] md:min-h-[50vh]">
-        <div class="py-2 px-6 md:p-6 md:py-4">
-            <Button class="bg-red-300 p-2 shadow" @click="router.push('/products')">Go back</Button>
+        <div class="py-2 px-4 md:p-6 md:py-4">
+            <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="32" height="32" viewBox="0 0 48 48">
+                    <mask id="ipSBack0">
+                        <path fill="#fff" fill-rule="evenodd" stroke="#fff" stroke-linejoin="round" stroke-width="4"
+                            d="M44 40.836c-4.893-5.973-9.238-9.362-13.036-10.168c-3.797-.805-7.412-.927-10.846-.365V41L4 23.545L20.118 7v10.167c6.349.05 11.746 2.328 16.192 6.833c4.445 4.505 7.009 10.117 7.69 16.836Z"
+                            clip-rule="evenodd" />
+                    </mask>
+                    <path fill="#ff9494" d="M0 0h48v48H0z" mask="url(#ipSBack0)" />
+                </svg></button>
         </div>
-        <div v-if="productData" class="flex flex-col-reverse  gap-6 md:flex-row items-center p-6 justify-around">
+        <div v-if="productData" class="flex flex-col-reverse  gap-6 md:flex-row items-center p-4 justify-around">
             <!-- image -->
             <div class="md:w-1/4 lg:w-[20%]">
                 <img :src="productData.image" alt="">
@@ -28,15 +36,14 @@
                             class="text-xl bg-gray-500 w-[30px] h-[30px] flex justify-center items-center p-2 rounded-full shadow-sm">-</Button>
                         <input v-model="count" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
                             readonly>
-                            <Button @click="increaseQty"
+                        <Button @click="increaseQty"
                             class="text-xl bg-gray-500 w-[30px] h-[30px] flex justify-center items-center p-2 rounded-full shadow-sm">+</Button>
                     </div>
 
                     <!-- addtocart -->
-                    <div class="flex items-center p-[0.7rem] bg-[#463333]">
-                        <img src="../assets/cart.svg" alt="">
-                        <Button @click="addToCart(count)" class="whitespace-nowrap">Add To
-                            Cart</Button>
+                    <div @click="addToCart(count)" class="flex items-center p-[0.7rem] bg-[#463333]">
+                        <img src="../assets/cart.svg" alt="" class="w-[20%]">
+                        <Button class="whitespace-nowrap">Add To Cart</Button>
                     </div>
 
                 </div>

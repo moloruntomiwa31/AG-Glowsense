@@ -6,7 +6,7 @@
             <th>Delete</th>
             <th>Price per Bottle</th>
         </tr>
-        <tr v-for='(data, name) in store.grouped'>
+        <tr v-for='(data, name) in store.grouped' :key="data">
             <td>{{ name }}</td>
             <td>{{ data.length }}</td>
             <td><button @click="store.deleteItem(name)">
@@ -20,7 +20,7 @@
                         <path fill="#ff8787" d="M0 0h48v48H0z" mask="url(#ipTDeleteTwo0)" />
                     </svg>
                 </button></td>
-                <td>₦{{ data[0].price }}</td>
+            <td>₦{{ data[0].price }}</td>
         </tr>
         <tr>
             <th colspan="3">Total</th>
@@ -41,6 +41,7 @@ th {
     text-align: left;
     padding: 8px;
 }
+
 tr:nth-child(even) {
     background-color: #685454;
     color: #fff;

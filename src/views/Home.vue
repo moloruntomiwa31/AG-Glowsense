@@ -23,14 +23,12 @@
         <HomeFeatures />
         <!-- --------swiper------ -->
         <div class="my-8 space-y-8">
-            <Swiper :modules="[EffectCube, Pagination, Autoplay]" :cube-effect="{
+            <Swiper :modules="[EffectCube, Autoplay]" :cube-effect="{
                 shadow: false
             }" :autoplay="{
-    delay: 2000,
+    delay: 1000,
     disableOnInteraction: false
-}" effect="card" :loop="true" :pagination="{
-    dynamicBullets: true
-}">
+}" effect="card" :loop="true">
                 <SwiperSlide v-for="photo in photos">
                     <img :src="photo" alt="">
                 </SwiperSlide>
@@ -49,10 +47,9 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { EffectCube, Pagination, Autoplay } from "swiper/modules"
+import { EffectCube, Autoplay } from "swiper/modules"
 import { useRouter } from 'vue-router'
 import 'swiper/css/effect-cube'
-import "swiper/css/pagination"
 import "swiper/css/autoplay"
 import 'swiper/css';
 

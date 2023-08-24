@@ -1,8 +1,15 @@
 <template>
     <main class="p-8" v-if="store.cartLength">
         <div>
-            <Button class="bg-red-300 p-2 shadow" @click="router.push(`/products/${store.idOfPreviousProductPage}`)">Go
-                Back</Button>
+            <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                    viewBox="0 0 48 48">
+                    <mask id="ipSBack0">
+                        <path fill="#fff" fill-rule="evenodd" stroke="#fff" stroke-linejoin="round" stroke-width="4"
+                            d="M44 40.836c-4.893-5.973-9.238-9.362-13.036-10.168c-3.797-.805-7.412-.927-10.846-.365V41L4 23.545L20.118 7v10.167c6.349.05 11.746 2.328 16.192 6.833c4.445 4.505 7.009 10.117 7.69 16.836Z"
+                            clip-rule="evenodd" />
+                    </mask>
+                    <path fill="#ff9494" d="M0 0h48v48H0z" mask="url(#ipSBack0)" />
+                </svg></button>
         </div>
         <h1 class="text-[2rem] font-bold text-center my-4 text-[#463333]">AG Glowsense Basket</h1>
         <div class="grid space-y-6 place-items-center" v-if="store.cart">
@@ -14,11 +21,11 @@
             </div>
         </div>
     </main>
-    <div v-else class="min-h-[100vh] flex flex-col gap-4 justify-center items-center">
+    <div v-else class="min-h-[80vh] flex flex-col gap-4 justify-center items-center">
         <img src="../assets/cart-cross-outline.svg" alt="" class="w-[20%]">
         <h1 class="capitalize text-[3rem] text-[#463333] text-center">Cart is Empty</h1>
         <div>
-            <Button class="bg-red-300 p-2 shadow" @click="router.push(`/products`)">Go Back</Button>
+            <Button class="bg-red-300 p-2 shadow" @click="router.back()">Go Back</Button>
         </div>
     </div>
 </template>
@@ -33,5 +40,4 @@ const router = useRouter()
 
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
