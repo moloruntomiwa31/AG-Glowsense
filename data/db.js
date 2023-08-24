@@ -15,7 +15,7 @@ import hairBoosterOil from "../src/assets/products/hairBooster.jpg"
 
 const data = [
   {
-    id: Math.round(Math.random() * 1000),
+    id: 42,
     image: carrot,
     name: "Carrot and Sugar Scrub",
     ingredients: "Carrot, sugar",
@@ -27,7 +27,7 @@ const data = [
     usage: "Use morning and night for a beautiful and glowing dark skin tone.",
   },
   {
-    id: Math.round(Math.random() * 1000),
+    id: 53,
     image: fruity,
     name: "Fruity Body Scrub",
     ingredients: "Lemon and Aloe Vera",
@@ -39,7 +39,7 @@ const data = [
     usage: "Use morning and night for a beautiful and glowing skin tone.",
   },
   {
-    id: Math.round(Math.random() * 1000),
+    id: 65,
     image: faceCleanser,
     name: "Face Cleanser",
     ingredients: "Salicylic acid and Vitamin A",

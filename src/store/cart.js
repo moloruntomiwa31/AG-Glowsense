@@ -3,9 +3,10 @@ import { defineStore, acceptHMRUpdate } from "pinia";
 import data from "../../data/db";
 import { groupBy } from "lodash";
 
+const storedCart = localStorage.getItem("cartItems")
 export const useStore = defineStore("cartStore", {
   state: () => ({
-    cart: [],
+    cart: storedCart ? JSON.parse(storedCart) : [],
     pricesOfData: [],
     idOfPreviousProductPage: null,
   }),
@@ -13,11 +14,10 @@ export const useStore = defineStore("cartStore", {
     grouped: (state) => groupBy(state.cart,  cartItems => cartItems.name),
     cartLength: (state) => state.cart.length,
     totalPriceOfItems() {
-      let data = this.cart.map((c) => c.price);
       let totalPrice = 0;
-      for (let i = 0; i < data.length; i++) {
-        totalPrice += parseInt(data[i]);
-      }
+      this.cart.forEach((p) => {
+        totalPrice += parseInt(p.price)
+      })
       return totalPrice;
     }
   },
@@ -28,9 +28,11 @@ export const useStore = defineStore("cartStore", {
       for (let i = 0; i < count; i++) {
         this.cart = [...this.cart, { ...productData }];
       }
+      localStorage.setItem("cartItems", JSON.stringify(this.cart))
     },
     deleteItem(name) {
       this.cart = this.cart.filter(item => item.name !== name)
+      localStorage.setItem("cartItems", JSON.stringify(this.cart))
     }
   },
 });

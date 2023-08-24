@@ -33,11 +33,11 @@
                 <div class="flex items-center gap-4 text-white">
                     <div class="bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
                         <Button @click="decreaseQty"
-                            class="text-xl bg-gray-500 w-[30px] h-[30px] flex justify-center items-center p-2 rounded-full shadow-sm">-</Button>
+                            class="text-xl border-2 p-1 border-red-300">-</Button>
                         <input v-model="count" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
                             readonly>
                         <Button @click="increaseQty"
-                            class="text-xl bg-gray-500 w-[30px] h-[30px] flex justify-center items-center p-2 rounded-full shadow-sm">+</Button>
+                            class="text-xl border-2 p-1 border-red-300">+</Button>
                     </div>
 
                     <!-- addtocart -->
