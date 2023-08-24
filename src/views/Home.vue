@@ -26,7 +26,7 @@
             <Swiper :modules="[EffectCube, Autoplay]" :cube-effect="{
                 shadow: false
             }" :autoplay="{
-    delay: 1000,
+    delay: 2000,
     disableOnInteraction: false
 }" effect="card" :loop="true">
                 <SwiperSlide v-for="photo in photos">
