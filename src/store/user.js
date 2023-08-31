@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  sendEmailVerification
 } from "firebase/auth";
 
 import { auth } from "../firebase";
@@ -18,7 +19,6 @@ export const userStore = defineStore("userStore", {
     async signUp(email, password) {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
-        console.log(userRes);
         this.user = res.user;
       }
     },

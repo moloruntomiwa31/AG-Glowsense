@@ -30,10 +30,8 @@ const submitForm = (email, password) => {
 const signUp = async (email, password) => {
     try {
         await userData.signUp(email, password);
-        if (userData.user) {
-            push.success("User Created!")
-            router.push("/")
-        }
+        push.success("User Created!")
+        router.push("/")
     } catch (e) {
         error.value = e.message.split(":")[1]
     }
