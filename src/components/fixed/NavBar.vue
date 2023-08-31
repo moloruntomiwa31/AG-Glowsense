@@ -12,7 +12,8 @@
             <RouterLink class="linkStyles" active-class="active" to="/about">About</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/products">Products</RouterLink>
         </nav>
-        <div class="flex space-x-4">
+        <div class="flex space-x-4 md:space-x-6 items-center" v-if="userData.user">
+            <div v-if="userData.user" class="hidden md:block">{{ userData.user.email }}</div>
             <RouterLink to="/cart" class="flex flex-col relative hover:text-red-300 duration-150" active-class="active">
                 <div>
                     <img src="../../assets/cart.svg" alt="">
@@ -26,6 +27,12 @@
                 <img src="../../assets/contact.svg" alt="">
                 <p>Contact</p>
             </RouterLink>
+            <button class="bg-red-300 p-2 mt-1 hover:bg-red-400" @click="logOut">LogOut</button>
+        </div>
+
+        <div v-if="!userData.user">
+            <RouterLink to="/signup" class="linkStyles" active-class="active">Sign Up</RouterLink>
+            <RouterLink to="/login" class="linkStyles" active-class="active">Log In</RouterLink>
         </div>
     </header>
     <!-- mobile -->
@@ -45,15 +52,24 @@
 import { RouterLink } from "vue-router"
 import { ref } from "vue"
 import { useRouter } from "vue-router"
+import { userStore } from "../../store/user";
 import { useStore } from "../../store/cart";
+import { usePush } from "notivue";
 import image1 from '../../assets/homeSvg/home.svg'
 import image2 from '../../assets/homeSvg/about.svg'
 import image3 from '../../assets/homeSvg/product.svg'
 
+const userData = userStore()
 const store = useStore()
 const router = useRouter()
 
 router.afterEach(() => window.scrollTo({ top: 0, behavior: "smooth" }))
+
+const logOut = () => {
+    userData.logOut()
+    router.push("/")
+    usePush().info("Logged Out!")
+}
 
 const mobileNav = ref([
     {
@@ -93,6 +109,5 @@ header {
 .activeTab {
     color: #ff9494;
     transition: 0.2s ease-in-out;
-    transform: scale(0.95);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <Notivue v-slot="item">
-    <Notifications :item="item" />
+    <Notifications :item="item" :theme="pastelTheme" />
   </Notivue>
   <RouterView />
   <a href="https://wa.me/+2348113005790" target="_blank"
@@ -16,10 +16,12 @@
 
 <script setup>
 import NavBar from './components/fixed/NavBar.vue';
-import { Notivue, Notifications } from 'notivue'
+import { Notivue, Notifications, pastelTheme } from 'notivue'
 import { RouterView } from "vue-router"
 import Footer from './components/fixed/Footer.vue';
 
 </script>
 
-<style  scoped></style>
+<style  scoped>
+
+</style>

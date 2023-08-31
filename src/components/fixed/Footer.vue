@@ -11,15 +11,19 @@
                 <p>All Rights Reserved.</p>
             </div>
         </div>
-        <nav class="flex md:justify-between gap-6 items-center justify-start md:w-1/3">
+        <nav class="flex md:justify-around gap-4 items-center justify-start md:w-1/3">
             <div class="flex flex-col justify-center">
                 <RouterLink class="linkStyles" active-class="active" to="/">Home</RouterLink>
                 <RouterLink class="linkStyles" active-class="active" to="/about">About</RouterLink>
                 <RouterLink class="linkStyles" active-class="active" to="/products">Products</RouterLink>
             </div>
-            <div class="flex flex-col justify-between space-y-12">
+            <div class="flex flex-col justify-between space-y-12" v-if="userData.user">
                 <RouterLink to="/cart" class="linkStyles">Cart</RouterLink>
                 <RouterLink to="/contacts" class="linkStyles">Contact Us</RouterLink>
+            </div>
+            <div class="flex flex-col justify-between space-y-12" v-if="!userData.user">
+                <RouterLink to="/signup" class="linkStyles">Sign Up</RouterLink>
+                <RouterLink to="/login" class="linkStyles">Log In</RouterLink>
             </div>
         </nav>
         <nav class="flex flex-col gap-4 md:justify-center items-start md:w-1/3">
@@ -50,7 +54,8 @@
 </template>
 
 <script setup>
-
+import { userStore } from '../../store/user';
+const userData = userStore()
 </script>
 
 <style scoped>footer {

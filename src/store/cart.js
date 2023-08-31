@@ -1,43 +1,57 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
+import { collection, addDoc } from "firebase/firestore";
+import { doc, onSnapshot, deleteDoc } from "firebase/firestore";
+
+import { db } from "../firebase";
 
 import data from "../../data/db";
 import { groupBy } from "lodash";
 
-const storedCart = localStorage.getItem("cartItems")
 export const useStore = defineStore("cartStore", {
   state: () => ({
-    cart: storedCart ? JSON.parse(storedCart) : [],
+    cart: [],
     pricesOfData: [],
     idOfPreviousProductPage: null,
   }),
   getters: {
-    grouped: (state) => groupBy(state.cart,  cartItems => cartItems.name),
+    grouped: (state) => groupBy(state.cart, (cartItems) => cartItems.name),
     cartLength: (state) => state.cart.length,
     totalPriceOfItems() {
       let totalPrice = 0;
       this.cart.forEach((p) => {
-        totalPrice += parseInt(p.price)
-      })
+        totalPrice += parseInt(p.price);
+      });
       return totalPrice;
-    }
+    },
   },
   actions: {
-    addToCart(id, count) {
-      const productData = data.find((d) => d.id == parseInt(id));
-      count = parseInt(count);
-      for (let i = 0; i < count; i++) {
-        this.cart = [...this.cart, { ...productData }];
+    async addToCart(id, quantity) {
+      try {
+        const productData = data.find((d) => d.id == parseInt(id));
+        quantity = parseInt(quantity);
+        for (let i = 0; i < quantity; i++) {
+          const docRef = collection(db, "cart");
+          await addDoc(docRef, productData);
+        }
+      } catch (e) {
+        console.log(e.message);
       }
-      localStorage.setItem("cartItems", JSON.stringify(this.cart))
     },
-    deleteItem(name) {
-      this.cart = this.cart.filter(item => item.name !== name)
-      localStorage.setItem("cartItems", JSON.stringify(this.cart))
-    }
+    async deleteItem(id) {
+      await deleteDoc(doc(db, "cart", id));
+    },
   },
+});
+
+onSnapshot(collection(db, "cart"), (querySnapshot) => {
+  let cartItems = [];
+  querySnapshot.forEach((doc) => {
+    cartItems.push({...doc.data(), id:doc.id});
+  });
+  useStore().cart = cartItems;
 });
 
 // hmr
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot));
 }

@@ -34,7 +34,7 @@
                     <div class="bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
                         <Button @click="decreaseQty"
                             class="text-xl border-2 p-1 border-red-300">-</Button>
-                        <input v-model="count" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
+                        <input v-model="quantity" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
                             readonly>
                         <Button @click="increaseQty"
                             class="text-xl border-2 p-1 border-red-300">+</Button>
@@ -65,9 +65,9 @@ const store = useStore()
 
 const route = useRoute()
 const router = useRouter()
-const count = ref(0)
-const increaseQty = () => { count.value++ }
-const decreaseQty = () => { count.value > 0 ? count.value-- : null }
+const quantity = ref(0)
+const increaseQty = () => { quantity.value++ }
+const decreaseQty = () => { quantity.value > 0 ? quantity.value-- : null }
 
 const { id } = route.params
 import data from '../../data/db';
@@ -82,12 +82,12 @@ import { usePush } from 'notivue'
 
 const push = usePush()
 
-const addToCart = (count) => {
-    if (count < 1) {
+const addToCart = async (quantity) => {
+    if (quantity < 1) {
         push.error("Add Item Quantity!")
         return
     }
-    store.addToCart(productData.value.id, count)
+    await store.addToCart(productData.value.id, quantity)
     push.success('Successfully added to cart!')
 };
 </script>

@@ -131,6 +131,7 @@ const photos = [
     height: 100%;
     object-fit: cover;
 }
+
 .swiper-pagination-bullet-active {
     color: red;
 }

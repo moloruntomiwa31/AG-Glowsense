@@ -3,13 +3,13 @@
         <tr>
             <th>Name</th>
             <th>Quantity</th>
-            <th>Delete</th>
+            <th>Delete one</th>
             <th>Price per Bottle</th>
         </tr>
         <tr v-for='(data, name) in store.grouped' :key="data">
             <td>{{ name }}</td>
             <td>{{ data.length }}</td>
-            <td><button @click="store.deleteItem(name)">
+            <td><button @click="store.deleteItem(data[0].id)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <mask id="ipTDeleteTwo0">
                             <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">

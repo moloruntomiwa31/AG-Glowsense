@@ -1,14 +1,14 @@
 <template>
     <div v-if="filteredProducts.length > 0"
-    class="p-5 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 productWrapper">
+        class="p-5 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8 productWrapper">
         <div class="text-[#EDEDED] product p-4 gap-4 flex flex-col items-start justify-around shadow md:space-y-0 bg-[#6C4A4A]"
             v-for="product in filteredProducts">
             <img :src="product.image" alt="Product Image" class="rounded-t product-image" width="300" height="400">
             <h3 class="capitalize font-bold text-lg">{{ product.name }}</h3>
             <p class="font-bold">Price - ₦{{ product.price }}</p>
             <Star />
-            <Button @click="router.push(`/products/${product.id}`)"
-                class="capitalize text-lg text-black bg-[#C89595] p-2 hover:bg-red-400 duration-150 whitespace-nowrap outline-none">
+            <Button @click="checkProductdetails(product.id)"
+                class="capitalize text-lg text-white bg-[#C89595] p-2 hover:bg-red-400 duration-150 whitespace-nowrap outline-none">
                 Check Details
             </Button>
         </div>
@@ -22,8 +22,23 @@
 import Star from '../home/Star.vue';
 import Button from '../fixed/Button.vue';
 import { useRouter } from 'vue-router';
+import { userStore } from '../../store/user';
+import { usePush } from 'notivue';
+
+const push = usePush()
 const router = useRouter()
+const userData = userStore()
+
 defineProps(['filteredProducts'])
+
+const checkProductdetails = (id) => {
+    if (userData.user) {
+        router.push(`/products/${id}`)
+    }else {
+        router.push('/signup')
+        push.error("User has to be authenticated!")
+    }
+}
 </script>
 
 <style scoped>
