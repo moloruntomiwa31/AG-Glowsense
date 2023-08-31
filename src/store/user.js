@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  sendEmailVerification
+  sendEmailVerification,
 } from "firebase/auth";
 
 import { auth } from "../firebase";
@@ -12,6 +12,7 @@ import { auth } from "../firebase";
 export const userStore = defineStore("userStore", {
   state: () => ({
     user: null,
+    userSet: false,
   }),
   actions: {
     //authenticate users
@@ -37,7 +38,6 @@ export const userStore = defineStore("userStore", {
 
 //getUserOnPageLoad
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    userStore().user = user;
-  }
+  userStore().user = user;
+  userStore().userSet = true;
 });

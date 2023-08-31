@@ -34,7 +34,6 @@ const logIn = async (email, password) => {
     } catch (e) {
         error.value = e.message.split(":")[1]
     }
-    console.log('logIn');
 }
 </script>
 
