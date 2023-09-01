@@ -30,15 +30,15 @@
     disableOnInteraction: false
 }" effect="card" :loop="true">
                 <SwiperSlide v-for="photo in photos">
-                    <img :src="photo" alt="">
+                    <img :src="photo" alt="Product Image">
                 </SwiperSlide>
             </Swiper>
             <div class="flex justify-center">
-                <Button class="bg-red-400 p-6 text-white hover:border-red-800 duration-300 hover:border-2"
+                <Button class="bg-red-400 p-6 text-white duration-300 hover:bg-red-500 shadow-sm"
                     @click="router.push('/products')">Check Products</Button>
             </div>
         </div>
-        <!-- -----testimonials -->
+        <!-- -----testimonials --> 
         <Testimonials />
 
     </main>

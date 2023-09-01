@@ -6,6 +6,7 @@ import { db } from "../firebase";
 
 import data from "../../data/db";
 import { groupBy } from "lodash";
+import { userStore } from "./user";
 
 export const useStore = defineStore("cartStore", {
   state: () => ({
@@ -26,19 +27,18 @@ export const useStore = defineStore("cartStore", {
   },
   actions: {
     async addToCart(id, quantity) {
-      try {
-        const productData = data.find((d) => d.id == parseInt(id));
-        quantity = parseInt(quantity);
-        for (let i = 0; i < quantity; i++) {
-          const docRef = collection(db, "cart");
-          await addDoc(docRef, productData);
-        }
-      } catch (e) {
-        console.log(e.message);
+      const productData = data.find((d) => d.id == parseInt(id));
+      quantity = parseInt(quantity);
+      for (let i = 0; i < quantity; i++) {
+        const docRef = collection(db, "cart");
+        await addDoc(docRef, productData);
+        // this.cart.push(productData);
+        // console.log(this.cart);
       }
     },
     async deleteItem(id) {
       await deleteDoc(doc(db, "cart", id));
+      // this.cart = this.cart.filter((item) => item.name !== name);
     },
   },
 });

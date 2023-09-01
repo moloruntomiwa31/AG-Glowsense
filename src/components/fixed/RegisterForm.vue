@@ -8,7 +8,9 @@
             <input :type="showPassword ? 'text' : 'password'" required v-model="passwordInput"
                 class="text-xl shadow-sm p-3 outline-red-400 shadow-red-400" placeholder="Password">
             <img src="../../assets/eye.svg" alt="" class="w-[30px] absolute right-4 top-[75%] cursor-pointer"
-                @click="toggleVisibility">
+                @click="toggleVisibility" v-if="!showPassword">
+            <img src="../../assets/closedEye.svg" alt="" class="w-[30px] absolute right-4 top-[75%] cursor-pointer"
+                @click="toggleVisibility" v-else>
         </div>
         <button type="submit" class="bg-red-400 p-3 text-white hover:bg-red-500 duration-150">{{ buttonText }}</button>
     </form>
@@ -25,6 +27,8 @@ defineProps(["buttonText"])
 const emit = defineEmits(['submitForm'])
 const submitForm = () => {
     emit('submitForm', emailInput.value, passwordInput.value)
+    emailInput.value = ''
+    passwordInput.value = ''
 }
 
 const toggleVisibility = () => {

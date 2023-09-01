@@ -4,7 +4,7 @@
         <!-- header -->
         <section class="flex flex-col md:flex-row p-8 md:gap-8 md:p-12 relative lg:min-h-[80vh]">
             <div class="hero md:w-2/5 md:flex md:items-center md:border-none border-2 border-red-300 min-h-full">
-                <img src="../assets/products/skinRepairOil.jpg" alt="" class="image ml-[20px] shadow">
+                <img src="../assets/products/skinRepairOil.jpg" alt="Product Image" class="image ml-[20px] shadow">
             </div>
             <div class="md:w-1/2 flex items-center flex-col justify-center">
                 <h1 class="text-[3rem] font-bold title text-left md:text-center w-full">Who Are We?</h1>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="md:w-1/2 relative overflow-hidden">
-                <img src="../assets/aboutPage.jpg" alt="" class="duration-300">
+                <img src="../assets/aboutPage.jpg" alt="Product Image" class="duration-300">
             </div>
         </section>
         <!-- ceo -->
@@ -43,9 +43,9 @@
             <div
                 class="flex flex-col md:flex-row-reverse justify-center items-center p-8 space-y-6 md:gap-6 min-h-[50vh] lg:w-3/4 lg:relative">
                 <div class="md:w-1/4  mt-4 items-center lg:absolute right-20 top-0">
-                    <img src="../assets/tosin.jpg" alt=""
+                    <img src="../assets/tosin.jpg" alt="Ceo's Image"
                         class="shadow lg:absolute left-4 rounded-full w-[200px] h-[200px] object-contain bg-gray-100">
-                    <img src="../assets/tosin2.jpg" alt=""
+                    <img src="../assets/tosin2.jpg" alt="Ceo's Image"
                         class="shadow hidden lg:block lg:absolute right-[-2rem] top-[6rem] rounded-full w-[200px] h-[200px] object-contain bg-gray-100">
                 </div>
                 <div class="md:w-1/2 lg:w-[40%]">

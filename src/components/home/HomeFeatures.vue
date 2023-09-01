@@ -11,7 +11,7 @@
                 :class="product.reverse ? 'md:flex-row-reverse' : ''">
                 <div style="background:linear-gradient(90deg, rgba(93, 2, 2, 0) 0%, rgba(93, 2, 2, 0.1) 100%)"
                     class="mx-auto inline-block rounded-full p-8 shadow md:w-1/4">
-                    <img :src="product.icon" alt="" class="w-full h-full">
+                    <img :src="product.icon" alt="Product Feature Icon" class="w-full h-full">
                 </div>
                 <div
                     class="grid place-items-center text-center space-y-4 md:place-items-start md:text-start md:w-3/4 lg:w-1/2 md:space-y-2">

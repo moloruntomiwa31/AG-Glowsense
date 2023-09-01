@@ -41,8 +41,8 @@
                     </div>
 
                     <!-- addtocart -->
-                    <div @click="addToCart(count)" class="flex items-center p-[0.7rem] bg-[#463333]">
-                        <img src="../assets/cart.svg" alt="" class="w-[20%]">
+                    <div @click="addToCart(quantity)" class="flex items-center p-[0.7rem] bg-[#463333]">
+                        <img src="../assets/cart.svg" alt="Product Image" class="w-[20%]">
                         <Button class="whitespace-nowrap">Add To Cart</Button>
                     </div>
 

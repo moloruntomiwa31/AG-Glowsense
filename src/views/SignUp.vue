@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center items-center min-h-[90vh] signUp">
+    <div class="flex flex-col justify-center items-center min-h-[100vh] signUp">
         <h1 class="text-4xl font-bold text-[#fff]">Sign Up</h1>
         <RegisterForm @submitForm="submitForm" :buttonText="buttonText" />
         <p class="text-white md:text-xl my-3">Already signned up? <RouterLink to="/login" class="underline text-red-400">Log
@@ -41,7 +41,9 @@ const signUp = async (email, password) => {
 
 <style  scoped>
 .signUp {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../assets/muse.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("../assets/signin.avif");
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 </style>

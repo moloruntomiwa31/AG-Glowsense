@@ -1,7 +1,7 @@
 <template>
     <header class="mainStyles items-center text-white min-w-full">
         <div class="logo flex items-center" @click="router.push('/')">
-            <img class="w-10" src="../../assets/NoBackground.png" alt="">
+            <img class="w-10" src="../../assets/NoBackground.png" alt="AG-Glowsense">
             <h1 class="text-sm font-bold uppercase font-serif whitespace-nowrap">Ag-glowsense</h1>
         </div>
         <!-- mobile -->
@@ -17,7 +17,7 @@
                 <div v-if="userData.user" class="hidden md:block">{{ userData.user.email }}</div>
                 <RouterLink to="/cart" class="flex flex-col relative hover:text-red-300 duration-150" active-class="active">
                     <div>
-                        <img src="../../assets/cart.svg" alt="">
+                        <img src="../../assets/cart.svg" alt="Cart">
                         <p>Cart</p>
                     </div>
                     <div
@@ -26,7 +26,7 @@
                     </div>
                 </RouterLink>
                 <RouterLink to="/contacts" class="hover:text-red-300  duration-150" active-class="active">
-                    <img src="../../assets/contact.svg" alt="">
+                    <img src="../../assets/contact.svg" alt="Contact">
                     <p>Contact</p>
                 </RouterLink>
                 <button class="bg-red-300 p-2 mt-1 hover:bg-red-400" @click="logOut">LogOut</button>
@@ -43,7 +43,7 @@
     <div class="fixed bottom-0 w-full flex justify-around items-center p-4 bg-[#463333] text-white md:hidden z-index">
         <RouterLink class="grid place-items-center" v-for="data in mobileNav" :key="data" active-class="activeTab"
             :to="data.link">
-            <img :src="data.image" alt="" ref="svg">
+            <img :src="data.image" alt="Icon">
             <h3>{{ data.text }}</h3>
         </RouterLink>
     </div>
