@@ -25,9 +25,9 @@ import { useRouter } from 'vue-router';
 import { userStore } from '../../store/user';
 import { usePush } from 'notivue';
 
-const push = usePush()
 const router = useRouter()
 const userData = userStore()
+const push = usePush()
 
 defineProps(['filteredProducts'])
 

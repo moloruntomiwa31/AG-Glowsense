@@ -38,7 +38,7 @@
                     @click="router.push('/products')">Check Products</Button>
             </div>
         </div>
-        <!-- -----testimonials --> 
+        <!-- -----testimonials -->
         <Testimonials />
 
     </main>

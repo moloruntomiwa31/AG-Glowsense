@@ -11,7 +11,7 @@ body {
 }
 
 .mainStyles {
-    @apply mx-auto flex  justify-between xs:px-1 sm:px-4 md:px-20 py-4
+    @apply mx-auto flex  justify-between xs:px-1 sm:px-4 lg:px-16 py-4
 }
 
 h1 {font-family: 'Kanit', sans-serif;}

@@ -1,6 +1,6 @@
 <template>
     <section id="testimonials">
-        <div class="header border-2 relative border-gray-300">
+        <div class="header border-2 relative border-gray-400">
             <h1
                 class="absoluteCenter whitespace-nowrap bg-white px-4 md:px-8 py-4 md:text-2xl text-red-500 uppercase font-medium rounded-2xl">
                 Testimonials</h1>

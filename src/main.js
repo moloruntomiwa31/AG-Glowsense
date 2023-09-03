@@ -9,7 +9,7 @@ import App from "./App.vue";
 import router from "./router";
 
 import "notivue/notifications.css";
-import "notivue/animations.css";
+import "notivue/animations.css"
 
 const app = createApp(App);
 

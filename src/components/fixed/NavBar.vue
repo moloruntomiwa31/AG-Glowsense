@@ -1,6 +1,6 @@
 <template>
-    <header class="mainStyles items-center text-white min-w-full">
-        <div class="logo flex items-center" @click="router.push('/')">
+    <header class="mainStyles items-center text-white w-full sticky top-0 pb-8 z-index">
+        <div class="logo flex items-center cursor-pointer" @click="router.push('/')">
             <img class="w-10" src="../../assets/NoBackground.png" alt="AG-Glowsense">
             <h1 class="text-sm font-bold uppercase font-serif whitespace-nowrap">Ag-glowsense</h1>
         </div>
@@ -11,6 +11,7 @@
             <RouterLink class="linkStyles" active-class="active" to="/">Home</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/about">About</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/products">Products</RouterLink>
+            <RouterLink class="linkStyles" active-class="active" to="/blogs">Blogs</RouterLink>
         </nav>
         <template v-if="userData.userSet">
             <div class="flex space-x-4 md:space-x-6 items-center" v-if="userData.user">
@@ -59,6 +60,7 @@ import { usePush } from "notivue";
 import image1 from '../../assets/homeSvg/home.svg'
 import image2 from '../../assets/homeSvg/about.svg'
 import image3 from '../../assets/homeSvg/product.svg'
+import image4 from '../../assets/homeSvg/blog.svg'
 
 const userData = userStore()
 const store = useStore()
@@ -88,6 +90,11 @@ const mobileNav = ref([
         image: image3,
         text: 'Products',
         link: '/products'
+    },
+    {
+        image: image4,
+        text: 'Blogs',
+        link: '/blogs'
     }
 ])
 </script>

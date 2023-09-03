@@ -1,6 +1,6 @@
 <template>
     <PreLoader v-if="isLoading" />
-    <main class="space-y-8 overflow-hidden" v-else>
+    <main class="space-y-8 overflow-hidden mt-8" v-else>
         <!-- header -->
         <section class="flex flex-col md:flex-row p-8 md:gap-8 md:p-12 relative lg:min-h-[80vh]">
             <div class="hero md:w-2/5 md:flex md:items-center md:border-none border-2 border-red-300 min-h-full">
@@ -18,7 +18,7 @@
         <!-- feature -->
         <section class="px-8 flex flex-col md:flex-row justify-around items-center space-y-12">
             <div class="md:w-[60%] lg:w-2/5 space-y-6 md:text-center">
-                <h1 class="text-5xl md:text-[4rem] text-red-300">Take Care Of Your Skin</h1>
+                <h1 class="text-5xl md:text-[4rem] text-[#ff9494]">Take Care Of Your Skin</h1>
                 <p class="text-lg">Skin care involves more than just cleaning it and using lotion. It also involves having a
                     healthy diet,
                     getting enough sleep and exercise, and managing stress levels. Your unique skin type may also determine
@@ -35,7 +35,7 @@
         </section>
         <!-- ceo -->
         <section>
-            <div class="header border-2 relative border-gray-300 mt-20">
+            <div class="header border-2 relative border-gray-400 mt-20">
                 <h1
                     class="absoluteCenter bg-white px-4 md:px-8 py-4 text-2xl text-red-500 uppercase font-medium rounded-2xl whitespace-nowrap">
                     Meet the Ceo</h1>
