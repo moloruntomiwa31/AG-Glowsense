@@ -15,7 +15,6 @@
         </nav>
         <template v-if="userData.userSet">
             <div class="flex space-x-4 md:space-x-6 items-center" v-if="userData.user">
-                <div v-if="userData.user" class="hidden md:block">{{ userData.user.email }}</div>
                 <RouterLink to="/cart" class="flex flex-col relative hover:text-red-300 duration-150" active-class="active">
                     <div>
                         <img src="../../assets/cart.svg" alt="Cart">

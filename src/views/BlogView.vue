@@ -4,7 +4,7 @@
             <div class="w-full lg:flex justify-center">
                 <img :src="presentBlog.image" alt="blog-image" class="w-full lg:w-3/4">
             </div>
-            <div class="space-y-8 px-6 mt-16 lg:px-20">
+            <div class="space-y-8 px-6 my-16 lg:px-20">
                 <div class="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
                         <path fill="currentColor" fill-rule="evenodd" d="M17.5 17.5L9.25 12l8.25-5.5l-1-1.5L6 12l10.5 7z" />
@@ -19,6 +19,9 @@
                 <p class="text-xl">{{ presentBlog.content }}</p>
             </div>
         </main>
+        <div v-else class="min-h-[60vh] flex justify-center items-center">
+            <h2 class="text-center text-3xl font-bold">Blog Not Found.</h2>
+        </div>
     </div>
 </template>
 

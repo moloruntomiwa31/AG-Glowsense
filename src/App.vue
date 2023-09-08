@@ -20,6 +20,9 @@ import { Notivue, Notifications, pastelTheme } from 'notivue'
 import { RouterView } from "vue-router"
 import Footer from './components/fixed/Footer.vue';
 
+if (Notification.permission !== "granted") {
+  Notification.requestPermission();
+}
 </script>
 
 <style  scoped>

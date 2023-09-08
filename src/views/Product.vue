@@ -9,7 +9,7 @@
             <!-- filter -->
             <div class="flex items-center gap-4">
                 <h3 class="font-bold">Filter By</h3>
-                <ProductFilter @optionSelected="updateOption"/>
+                <ProductFilter @optionSelected="updateOption" />
             </div>
             <!-- input -->
             <div class="flex items-center md:justify-end gap-2">
@@ -20,17 +20,19 @@
         </div>
 
         <!-- products -->
-        <CartProduct :filteredProducts="filteredProducts"/>
+        <CartProduct :filteredProducts="filteredProducts" />
     </main>
 </template>
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router';
 import PreLoader from '../components/fixed/PreLoader.vue';
 import CartProduct from '../components/product/CartProduct.vue';
 import Input from '../components/fixed/Input.vue';
 import { useProductStore } from '../store/productStore';
 import ProductFilter from '../components/product/ProductFilter.vue';
-
+const router = useRouter()
+const route = useRoute()
 
 const productStore = useProductStore()
 
@@ -42,6 +44,7 @@ const selectOption = ref('all')
 
 const updateOption = (option) => {
     selectOption.value = option
+    router.push({ query: { product_type: option } })
 }
 
 const filteredProducts = computed(() => {
@@ -56,9 +59,9 @@ const filteredProducts = computed(() => {
 
 onMounted(() => {
     setTimeout(() => isLoading.value = false, 2000)
+    selectOption.value = route.query.product_type || "all"
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
   

@@ -7,9 +7,9 @@
         </div>
         <div class="flex space-x-4 justify-center mt-8">
             <h3 @click="showMainOnly" :class="{ 'border-2 border-red-300 duration-200': onMain }"
-                class="text-xl bg-[#FDF6F0] p-1 rounded-md cursor-pointer">Main Blogs</h3>
+                class="text-xl bg-[#FDF6F0] p-2 rounded-md cursor-pointer">Main Blogs</h3>
             <h3 @click="showFavOnly" :class="{ 'border-2 border-red-300 duration-200': onFav }"
-                class="text-x bg-[#FDF6F0] p-1 rounded-md cursor-pointer">Favourite Blogs
+                class="text-x bg-[#FDF6F0] p-2 rounded-md cursor-pointer">Favourite Blogs
             </h3>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-4 gap-8 md:p-6" v-if="onMain">

@@ -2,19 +2,17 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyAV43hZRGK7NRQRBtXMFwuWkwqIDvzvMKw",
-  authDomain: "ag-glowsense.firebaseapp.com",
-  projectId: "ag-glowsense",
-  storageBucket: "ag-glowsense.appspot.com",
-  messagingSenderId: "53667854322",
-  appId: "1:53667854322:web:14a6b256afdb4f3764dd6b"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGE_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth()
+const auth = getAuth();
 const db = getFirestore(app);
 
-
-export {auth, db}
+export { auth, db };

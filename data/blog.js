@@ -17,7 +17,7 @@ const blogs = [
   {
     image: skinCycling,
     id: "2",
-    date: "August 2023",
+    date: "June 2023",
     title: "VITAMIN C FOR THE SKIN: WHAT DOES IT DO?",
     fav: true,
     writer: "Adewunmi Tosin",
@@ -27,7 +27,7 @@ const blogs = [
   {
     image: vitaminC,
     id: "3",
-    date: "August 2023",
+    date: "Febuary 2023",
     title: "WHAT IS A SKIN CYCLING ROUTINE?",
     fav: false,
     writer: "Adewunmi Tosin",

@@ -6,7 +6,7 @@ import { db } from "../firebase";
 
 import data from "../../data/db";
 import { groupBy } from "lodash";
-import { userStore } from "./user";
+// import { userStore } from "./user";
 
 export const useStore = defineStore("cartStore", {
   state: () => ({

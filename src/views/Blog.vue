@@ -6,7 +6,7 @@
                 class="text-center grid place-items-center w-full px-6 py-12 md:py-0 blogHero relative min-h-[50vh] lg:min-h-[100vh]">
                 <div class="w-[80%]">
                     <h3 class="uppercase text-xl font-semibold text-gray-100">From the blog</h3>
-                    <h1 class="font-bold capitalize text-[2.5rem] md:text-[4rem] text-red-300 my-2">We really have so much
+                    <h1 class="font-bold capitalize text-[2.2rem] md:text-[4rem] text-red-300 my-2">We really have so much
                         to
                         share
                         with you!</h1>
@@ -22,9 +22,10 @@
             <!-- newsletter -->
             <section class="w-full">
                 <main class="bg-[#463333] space-y-8 p-20 flex justify-center items-center flex-col">
-                    <h1 class="font-bold text-5xl text-white"><span class="text-red-300 whitespace-nowrap">Join</span> Our <span
+                    <h1 class="font-bold text-5xl text-white text-center"><span
+                            class="text-red-300 whitespace-nowrap">Join</span> Our <span
                             class="text-red-300">NewsLetter!!</span></h1>
-                    <div class="space-x-4">
+                    <div class="flex justify-center space-x-2 w-full">
                         <input type="email"
                             class="border-red-400 border-2 p-1 outline-none bg-transparent placeholder:text-white text-white"
                             placeholder="johdoe@gmail.com">

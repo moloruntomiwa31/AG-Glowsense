@@ -3,8 +3,8 @@
     <main v-else>
         <!-- hero -->
         <section class="hero min-h-[100vh]">
-            <div :class="{ animate: shouldAnimate }" class="hero-text md:w-1/2 space-y-4">
-                <h1 class="text-white text-[3rem] md:text-[4rem] font-[900] title lg:w-[85%]">Treat your skin<span
+            <div :class="{ animate: shouldAnimate }" class="hero-text md:w-1/2 space-y-2">
+                <h1 class="text-white text-[3rem] md:text-[4rem] font-[900] lg:w-[85%]">Treat your skin<span
                         class="text-red-300"> with
                         nature.</span></h1>
                 <Button @click="router.push('/products')"
@@ -130,9 +130,5 @@ const photos = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.swiper-pagination-bullet-active {
-    color: red;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <input v-bind="$attrs" 
     @input="$emit($event.target.value)" 
-    v-model="modelValue" 
+    v-model.trim="modelValue" 
     :placeholder="placeholder">
 </template>
 

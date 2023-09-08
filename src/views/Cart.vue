@@ -1,5 +1,6 @@
 <template>
-    <h1 class="text-2xl font-bold mx-4 text-[#463333]">Welcome <span class="uppercase text-red-400"> {{ userData.user.email }}</span></h1>
+    <h1 class="text-2xl font-bold mx-4 text-[#463333]">Welcome <span class="uppercase text-red-400"> {{ userData.user.email
+    }}</span></h1>
     <main class="p-8" v-if="store.cartLength">
         <div>
             <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -43,7 +44,7 @@ const store = useStore()
 const userData = userStore()
 
 const router = useRouter()
-const push =  usePush()
+const push = usePush()
 
 const clearCart = () => {
     store.$reset()
