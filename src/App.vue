@@ -1,8 +1,5 @@
 <template>
   <NavBar />
-  <Notivue v-slot="item">
-    <Notifications :item="item" :theme="pastelTheme" />
-  </Notivue>
   <RouterView />
   <a href="https://wa.me/+2348113005790" target="_blank"
     class="fixed bottom-32 md:bottom-4 right-[8%] outline-dotted rounded-full outline-red-300 p-2 z-10">
@@ -16,15 +13,9 @@
 
 <script setup>
 import NavBar from './components/fixed/NavBar.vue';
-import { Notivue, Notifications, pastelTheme } from 'notivue'
 import { RouterView } from "vue-router"
 import Footer from './components/fixed/Footer.vue';
 
-if (Notification.permission !== "granted") {
-  Notification.requestPermission();
-}
 </script>
 
-<style  scoped>
-
-</style>
+<style  scoped></style>

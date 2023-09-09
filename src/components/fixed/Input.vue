@@ -2,7 +2,8 @@
     <input v-bind="$attrs" 
     @input="$emit($event.target.value)" 
     v-model.trim="modelValue" 
-    :placeholder="placeholder">
+    :placeholder="placeholder"
+    class="rounded-md">
 </template>
 
 <script setup>

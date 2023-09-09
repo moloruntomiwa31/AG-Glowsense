@@ -6,8 +6,8 @@
                 Testimonials</h1>
         </div>
         <div class="grid place-items-center grid-cols-1 md:grid-cols-3 p-8 gap-[20px]">
-            <div class="p-8 md:h-[100%] shadow-md space-y-4 md:space-y-0 bg-[#F6DFEB]"
-                v-for="testimonial in testimonials">
+            <div class="p-8 md:h-[100%] shadow space-y-4 md:space-y-0 bg-[#F6DFEB] rounded-md"
+                v-for="testimonial in testimonials" data-aos="fade-up">
                 <div class="flex gap-2 items-start justify-center">
                     <div class="space-y-2 text-lg">
                         <p>{{ testimonial.text }}</p>

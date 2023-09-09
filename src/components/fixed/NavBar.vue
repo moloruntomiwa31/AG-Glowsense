@@ -53,25 +53,22 @@
 import { RouterLink } from "vue-router"
 import { ref } from "vue"
 import { useRouter } from "vue-router"
-import { userStore } from "../../store/user";
+import { useUserStore } from "../../store/user";
 import { useStore } from "../../store/cart";
-import { usePush } from "notivue";
 import image1 from '../../assets/homeSvg/home.svg'
 import image2 from '../../assets/homeSvg/about.svg'
 import image3 from '../../assets/homeSvg/product.svg'
 import image4 from '../../assets/homeSvg/blog.svg'
 
-const userData = userStore()
+const userData = useUserStore()
 const store = useStore()
 const router = useRouter()
-const push = usePush()
 
 router.afterEach(() => window.scrollTo({ top: 0, behavior: "smooth" }))
 
 const logOut = () => {
     userData.logOut()
     router.push("/")
-    push.info("Logged Out!")
 }
 
 const mobileNav = ref([

@@ -8,7 +8,7 @@ import {
 
 import { auth } from "../firebase";
 
-export const userStore = defineStore("userStore", {
+export const useUserStore = defineStore("userStore", {
   state: () => ({
     user: null,
     userSet: false,
@@ -38,6 +38,6 @@ export const userStore = defineStore("userStore", {
 
 //getUserOnPageLoad
 onAuthStateChanged(auth, (user) => {
-  userStore().user = user;
-  userStore().userSet = true;
+  useUserStore().user = user;
+  useUserStore().userSet = true;
 });

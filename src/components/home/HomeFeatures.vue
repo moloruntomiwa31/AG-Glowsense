@@ -6,7 +6,7 @@
                 Benefit Our Services</h1>
         </div>
         <div class="grid place-items-center p-12 space-y-8 w-full">
-            <div v-for="(product, index) in productDetails" :key="index"
+            <div v-for="(product, index) in productDetails" :key="index" data-aos="fade-up"
                 class="flex flex-col space-y-4 md:space-y-0 md:flex-row md:gap-4 mx-auto items-center justify-center"
                 :class="product.reverse ? 'md:flex-row-reverse' : ''">
                 <div style="background:linear-gradient(90deg, rgba(93, 2, 2, 0) 0%, rgba(93, 2, 2, 0.1) 100%)"

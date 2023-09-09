@@ -12,13 +12,11 @@
 <script setup>
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import { userStore } from '../store/user';
+import { useUserStore } from '../store/user';
 import { useRouter } from 'vue-router';
-import { usePush } from 'notivue';
 import RegisterForm from '../components/fixed/RegisterForm.vue';
 
-const userData = userStore()
-const push = usePush()
+const userData = useUserStore()
 const router = useRouter()
 const buttonText = ref('Log In')
 const error = ref('')
@@ -31,7 +29,6 @@ const submitForm = (email, password) => {
 const logIn = async (email, password) => {
     try {
         await userData.logIn(email, password);
-        push.success("LogIn Successful!")
         router.push("/")
     } catch (e) {
         error.value = e.message.split(":")[1]

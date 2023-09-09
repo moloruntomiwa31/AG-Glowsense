@@ -14,7 +14,7 @@
         <div v-if="productData" class="flex flex-col-reverse  gap-6 md:flex-row items-center p-4 justify-around">
             <!-- image -->
             <div class="md:w-1/4 lg:w-[20%]">
-                <img :src="productData.image" alt="">
+                <img :src="productData.image" alt="Product-Image" class="rounded-md">
             </div>
             <!-- details -->
             <div class="space-y-2 md:w-[60%]">
@@ -31,7 +31,8 @@
 
                 <!-- order -->
                 <div class="flex items-center gap-4 text-white">
-                    <div class="bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
+                    <div class="rounded-md bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
+                        <h3 class="font-bold text-md">QTY</h3>
                         <Button @click="decreaseQty"
                             class="text-xl border-2 p-1 border-red-300">-</Button>
                         <input v-model="quantity" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
@@ -41,9 +42,9 @@
                     </div>
 
                     <!-- addtocart -->
-                    <div @click="addToCart(quantity)" class="flex items-center p-[0.7rem] bg-[#463333]">
+                    <div @click="addToCart(quantity)" class="rounded-md flex items-center p-[1rem] bg-[#463333]">
                         <img src="../assets/cart.svg" alt="Product Image" class="w-[20%]">
-                        <Button class="whitespace-nowrap">Add To Cart</Button>
+                        <button class="whitespace-nowrap">Add To Cart</button>
                     </div>
 
                 </div>
@@ -61,6 +62,7 @@ import Button from '../components/fixed/Button.vue';
 import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useStore } from '../store/cart'
+
 const store = useStore()
 
 const route = useRoute()
@@ -78,17 +80,11 @@ onMounted(() => {
     store.idOfPreviousProductPage = id
 })
 
-import { usePush } from 'notivue'
-
-const push = usePush()
-
 const addToCart = async (quantity) => {
     if (quantity < 1) {
-        push.error("Add Item Quantity!")
         return
     }
     await store.addToCart(productData.value.id, quantity)
-    push.success('Successfully added to cart!')
 };
 </script>
 

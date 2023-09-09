@@ -3,10 +3,10 @@
     <main class="space-y-8" v-else>
         <section
             class="relative flex flex-col-reverse md:flex-row items-center justify-around p-8 space-y-8 gap-8 md:space-y-0 min-h-[50vh] lg:min-h-[100vh]">
-            <div class="md:w-1/2 mt-4">
-                <img src="../assets/products/organicBodyButter.jpg" alt="AG-glowsense product image">
+            <div class="md:w-1/2 p-4" data-aos="fade-right">
+                <img src="../assets/products/organicBodyButter.jpg" alt="AG-glowsense product image" class="rounded-md">
             </div>
-            <div class="flex-col flex md:w-[600px] space-y-4 text-center items-center">
+            <div class="flex-col flex md:w-[600px] space-y-4 text-center items-center" data-aos="fade-left">
                 <h1 class="text-4xl font-bold text-red-400">GOT A SKINCARE QUESTION?</h1>
                 <p class="text-2xl md:text-[1.5rem]">Feel free to reach out to us via social media, our Whatsapp runs 24/7.
                     You can use the links below to find us across the web.</p>
@@ -15,13 +15,16 @@
             </div>
         </section>
         <!-- faq -->
-        <section id="faq">
+        <section id="faq" data-aos="fade-up">
             <h1 class="text-4xl text-center font-sans">Frequently Asked Questions</h1>
-            <FAQ :faqs="faqs"/>
-            <div class="grid place-items-center my-2">
-                <a href="https://wa.me/+2348113005790" target="_blank"
-                    class="capitalize p-4 bg-red-400 shadow-md hover:bg-red-500 text-white">Reach Us for More</a>
-            </div>
+            <FAQ :faqs="faqs" data-aos="fade-up" />
+        </section>
+
+        <!-- contact body -->
+        <section id="contact" data-aos="fade-up">
+            <h1 class="text-4xl text-center font-sans">Get in Touch</h1>
+            <p class="text-center text-lg text-[#4d4141]">Get your words and thoughts across, we’ll be glad to respond.</p>
+            <ContactForm :contactDetails="contactDetails"/>
         </section>
     </main>
 </template>
@@ -30,8 +33,11 @@
 import PreLoader from '../components/fixed/PreLoader.vue';
 import Button from '../components/fixed/Button.vue';
 import FAQ from '../components/contact/FAQ.vue';
+import ContactForm from "../components/contact/ContactForm.vue"
 import useScroll from '../scroll';
 import { ref, onMounted } from 'vue'
+import email from "../assets/email.svg"
+import call from "../assets/call.svg"
 const { scrollTosection } = useScroll()
 const isLoading = ref(true)
 const faqs = ref([
@@ -61,6 +67,19 @@ const faqs = ref([
         open: false
     }
 ])
+
+const contactDetails = ref([
+    {
+        title: "Email",
+        image: email,
+        text: "ag.glowsense@gmail.com"
+    },
+    {
+        title: "Call",
+        image: call,
+        text: "+234811 300 5790"
+    },
+])
 onMounted(() => {
     setTimeout(() => {
         isLoading.value = false
@@ -68,4 +87,5 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

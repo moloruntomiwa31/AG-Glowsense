@@ -1,19 +1,21 @@
 import "./assets/main.css";
 import { createPinia } from "pinia";
 import { createApp } from "vue";
-import { notivue } from "notivue";
 
 import App from "./App.vue";
 import router from "./router";
 
-import "notivue/notifications.css";
-import "notivue/animations.css"
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init({
+  offset: 200,
+  duration: 600,
+  easing: "ease-in-out",
+  delay: 200,
+  once: true,
+});
 
 const app = createApp(App);
-
-app.use(notivue, {
-  limit: 1
-});
 app.use(createPinia());
 app.use(router);
 app.mount("#app");

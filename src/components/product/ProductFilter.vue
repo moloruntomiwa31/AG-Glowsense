@@ -1,5 +1,5 @@
 <template>
-    <select class="bg-red-300 outline-none p-2" v-model="selectOption">
+    <select class="bg-red-300 outline-none p-2 rounded-md" v-model="selectOption">
         <option value="all">All</option>
         <option value="bodyWash">Body Wash</option>
         <option value="faceWash">Face Wash</option>

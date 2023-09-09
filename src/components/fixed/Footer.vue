@@ -42,27 +42,21 @@
                     </svg>
                 </a>
             </div>
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-                    <path fill="#6c4a4a"
-                        d="m5.966 4.49l-.827.742a4.914 4.914 0 0 0 .455 1.073a4.736 4.736 0 0 0 .722.922l1.071-.33c.6-.185 1.255.005 1.654.48l.61.726a1.47 1.47 0 0 1-.137 2.042c-.995.908-2.527 1.215-3.674.314a10.429 10.429 0 0 1-2.516-2.87A9.986 9.986 0 0 1 2.03 4.013c-.22-1.422.821-2.56 2.119-2.948c.774-.232 1.6.166 1.884.908l.335.875c.22.576.062 1.225-.402 1.641Z" />
-                </svg>
+            <div class="flex items-center space-x-2">
+                <img src="../../assets/call.svg" alt="" class="bg-[#6c4a4a] p-1 rounded-full">
                 <p>+234811 300 5790</p>
             </div>
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M19.435 4.065H4.565a2.5 2.5 0 0 0-2.5 2.5v10.87a2.5 2.5 0 0 0 2.5 2.5h14.87a2.5 2.5 0 0 0 2.5-2.5V6.565a2.5 2.5 0 0 0-2.5-2.5Zm-14.87 1h14.87a1.489 1.489 0 0 1 1.49 1.39c-2.47 1.32-4.95 2.63-7.43 3.95a6.172 6.172 0 0 1-1.06.53a2.083 2.083 0 0 1-1.67-.39c-1.42-.75-2.84-1.51-4.25-2.26c-1.14-.6-2.3-1.21-3.44-1.82a1.491 1.491 0 0 1 1.49-1.4Zm16.37 12.37a1.5 1.5 0 0 1-1.5 1.5H4.565a1.5 1.5 0 0 1-1.5-1.5V7.6c2.36 1.24 4.71 2.5 7.07 3.75a5.622 5.622 0 0 0 1.35.6a2.872 2.872 0 0 0 2-.41c1.45-.76 2.89-1.53 4.34-2.29c1.04-.56 2.07-1.1 3.11-1.65Z" />
-                </svg>
-                <p>agglowsense@gmail.com</p>
+            <div class="flex items-center space-x-2">
+                <img src="../../assets/email.svg" alt="" class="bg-[#6c4a4a] p-1 rounded-full">
+                <p>ag.glowsense@gmail.com</p>
             </div>
         </nav>
     </footer>
 </template>
 
 <script setup>
-import { userStore } from '../../store/user';
-const userData = userStore()
+import { useUserStore } from '../../store/user';
+const userData = useUserStore()
 </script>
 
 <style scoped>footer {

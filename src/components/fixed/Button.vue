@@ -1,5 +1,5 @@
 <template>
-      <button class="shadow cursor-pointer" @click="click">
+      <button class="shadow cursor-pointer rounded-md" @click="click">
     <slot></slot>
   </button>
 </template>

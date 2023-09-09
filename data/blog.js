@@ -19,7 +19,7 @@ const blogs = [
     id: "2",
     date: "June 2023",
     title: "VITAMIN C FOR THE SKIN: WHAT DOES IT DO?",
-    fav: true,
+    fav: false,
     writer: "Adewunmi Tosin",
     content: `We all know the old adage that vitamin C helps to boost your immune system which has many of us reaching for it when we feel a cold coming on. \n In fact, the overall health benefits of vitamin C for your body are some of its most widely recognized and understood traits. But in recent years it has started to garner a new reputation as a powerful skin care ingredient prompting stores to line their shelves, both physically and digitally, with products that boast its prominence on their ingredient lists.
     But what does vitamin C do for your skin? It is a question we commonly hear from our customers in and out of the clinic. As with many premium skin care ingredients, it seems to have risen in popularity without much explanation or education on its uses, which is a shame given the variety of skin concerns topical vitamin C application can help address.`,

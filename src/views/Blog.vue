@@ -17,19 +17,19 @@
 
             <!-- blogs -->
             <TheBlog :onMain="onMain" :onFav="onFav" @toggleFav="toggleFav" @showFavOnly="showFavOnly"
-                @showMainOnly="showMainOnly" />
+                @showMainOnly="showMainOnly"/>
 
             <!-- newsletter -->
-            <section class="w-full">
-                <main class="bg-[#463333] space-y-8 p-20 flex justify-center items-center flex-col">
+            <section class="w-full grid place-items-center">
+                <main class="bg-[#463333] space-y-8 my-6 p-20 flex justify-center items-center flex-col md:w-1/2 md:rounded-md" data-aos="zoom-in">
                     <h1 class="font-bold text-5xl text-white text-center"><span
                             class="text-red-300 whitespace-nowrap">Join</span> Our <span
                             class="text-red-300">NewsLetter!!</span></h1>
                     <div class="flex justify-center space-x-2 w-full">
                         <input type="email"
-                            class="border-red-400 border-2 p-1 outline-none bg-transparent placeholder:text-white text-white"
+                            class="rounded-md border-red-400 border-2 p-2 outline-none bg-transparent placeholder:text-white text-white"
                             placeholder="johdoe@gmail.com">
-                        <button class="shadow p-[0.36rem] text-white bg-black hover:opacity-80">Join</button>
+                        <Button class="shadow p-[0.36rem] text-white bg-black hover:opacity-80">Join</Button>
                     </div>
                 </main>
             </section>
@@ -42,6 +42,7 @@ import { ref, onMounted } from "vue"
 import TheBlog from "../components/blog/TheBlog.vue";
 import PreLoader from '../components/fixed/PreLoader.vue';
 import DownButton from "../components/fixed/DownButton.vue";
+import Button from "../components/fixed/Button.vue";
 import useScroll from '../scroll';
 const { scrollTosection } = useScroll()
 const isLoading = ref(true)

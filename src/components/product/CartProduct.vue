@@ -1,9 +1,9 @@
 <template>
     <div v-if="filteredProducts.length > 0"
         class="p-5 grid place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 productWrapper">
-        <div class="text-[#EDEDED] md:max-w-0 md:w-[80%] product p-4 gap-4 flex flex-col items-start justify-around shadow md:space-y-0 bg-[#6C4A4A]"
+        <div class="rounded-md text-[#EDEDED] md:max-w-0 md:w-[80%] product p-4 gap-4 flex flex-col items-start justify-around shadow md:space-y-0 bg-[#6C4A4A]"
             v-for="product in filteredProducts">
-            <img :src="product.image" alt="Product Image" class="rounded-t product-image" width="300" height="400">
+            <img :src="product.image" alt="Product Image" class="rounded-md product-image" width="300" height="400">
             <h3 class="capitalize font-bold text-lg">{{ product.name }}</h3>
             <p class="font-bold">Price - ₦{{ product.price }}</p>
             <Star />
@@ -22,12 +22,10 @@
 import Star from '../home/Star.vue';
 import Button from '../fixed/Button.vue';
 import { useRouter } from 'vue-router';
-import { userStore } from '../../store/user';
-import { usePush } from 'notivue';
+import { useUserStore } from '../../store/user';
 
 const router = useRouter()
-const userData = userStore()
-const push = usePush()
+const userData = useUserStore()
 
 defineProps(['filteredProducts'])
 
@@ -35,10 +33,6 @@ const checkProductdetails = (id) => {
     if (userData.user) {
         router.push(`/products/${id}`)
     } else {
-        push.error({
-            title: "Error",
-            message: "User has to be authenticated!"
-        })
         router.push('/signup')
     }
 }
