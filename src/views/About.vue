@@ -50,7 +50,7 @@
                         <div class="p-1 rounded-full w-[15%] md:w-fit">
                             <img src="../assets/check.svg" alt="check-image" class="w-full">
                         </div>
-                        <p class="text-md">{{ value }} </p>
+                        <p class="text-lg">{{ value }} </p>
                     </div>
                 </div>
             </div>

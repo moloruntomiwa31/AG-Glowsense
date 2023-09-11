@@ -6,13 +6,14 @@
                 The Blogs</h1>
         </div>
         <div class="flex space-x-4 justify-center mt-8">
-            <h3 @click="showMainOnly" :class="{ 'border-2 border-red-300 duration-200': onMain }"
-                class="text-xl bg-[#FDF6F0] p-2 rounded-md cursor-pointer">Main Blogs</h3>
-            <h3 @click="showFavOnly" :class="{ 'border-2 border-red-300 duration-200': onFav }"
+            <button @click="showMainOnly" :class="{ 'border-2 border-red-300 duration-200': onMain }"
+                class="text-xl bg-[#FDF6F0] p-2 rounded-md cursor-pointer">Main Blogs</button>
+            <button @click="showFavOnly" :class="{ 'border-2 border-red-300 duration-200': onFav }"
                 class="text-x bg-[#FDF6F0] p-2 rounded-md cursor-pointer">Favourite Blogs
-            </h3>
+            </button>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-4 gap-8 md:p-6 min-h-[50vh]" v-if="onMain">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-4 gap-8 md:p-6 min-h-[50vh]"
+            v-if="onMain">
             <div class="w-[75%] md:w-[300px]" v-for="blog in blogStore.blogs" :key="blog" data-aos="fade-up">
                 <div class="relative">
                     <div class="absolute top-0 hover:bg-[#00000041] rounded-md duration-300 left-0 w-full h-full"></div>
@@ -32,7 +33,8 @@
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-4 gap-8 md:p-6 min-h-[50vh]" v-if="onFav">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center my-4 gap-8 md:p-6 min-h-[50vh]"
+            v-if="onFav">
             <div class="w-[75%] md:w-[300px]" v-for="blog in blogStore.getFavBlogs" :key="blog" data-aos="fade-up"
                 v-if="blogStore.getFavBlogs">
                 <div class="relative">

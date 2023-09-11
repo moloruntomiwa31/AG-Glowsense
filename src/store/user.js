@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore, acceptHMRUpdate } from "pinia";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -41,3 +41,8 @@ onAuthStateChanged(auth, (user) => {
   useUserStore().user = user;
   useUserStore().userSet = true;
 });
+
+// hmr
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));
+}

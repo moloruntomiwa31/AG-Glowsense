@@ -29,7 +29,7 @@
                     <img src="../../assets/contact.svg" alt="Contact">
                     <p>Contact</p>
                 </RouterLink>
-                <button class="bg-red-300 p-2 mt-1 hover:bg-red-400" @click="logOut">LogOut</button>
+                <Button class="bg-red-300 p-2 mt-1 hover:bg-red-400" @click="logOut">LogOut</Button>
             </div>
 
             <div v-if="!userData.user">
@@ -59,6 +59,9 @@ import image1 from '../../assets/homeSvg/home.svg'
 import image2 from '../../assets/homeSvg/about.svg'
 import image3 from '../../assets/homeSvg/product.svg'
 import image4 from '../../assets/homeSvg/blog.svg'
+import Button from "./Button.vue";
+import { useToast } from '../../store/toast';
+const toast = useToast()
 
 const userData = useUserStore()
 const store = useStore()
@@ -68,6 +71,7 @@ router.afterEach(() => window.scrollTo({ top: 0, behavior: "smooth" }))
 
 const logOut = () => {
     userData.logOut()
+    toast.addToast("User Logged Out!", "info")
     router.push("/")
 }
 

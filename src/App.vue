@@ -1,5 +1,8 @@
 <template>
   <NavBar />
+  <Transition name="toast">
+    <Toast v-if="toast.showToast" />
+  </Transition>
   <RouterView />
   <a href="https://wa.me/+2348113005790" target="_blank"
     class="fixed bottom-32 md:bottom-4 right-[8%] outline-dotted rounded-full outline-red-300 p-2 z-10">
@@ -15,7 +18,25 @@
 import NavBar from './components/fixed/NavBar.vue';
 import { RouterView } from "vue-router"
 import Footer from './components/fixed/Footer.vue';
-
+import Toast from './components/fixed/Toast.vue';
+import { useToast } from './store/toast';
+const toast = useToast()
 </script>
 
-<style  scoped></style>
+<style  scoped>
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.toast-enter-to,
+.toast-leave-from {
+  transform: translateY(0px);
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+</style>

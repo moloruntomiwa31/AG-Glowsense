@@ -23,18 +23,21 @@ import Star from '../home/Star.vue';
 import Button from '../fixed/Button.vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../../store/user';
+import { useToast } from '../../store/toast';
 
 const router = useRouter()
 const userData = useUserStore()
+const toast = useToast()
 
 defineProps(['filteredProducts'])
 
 const checkProductdetails = (id) => {
     if (userData.user) {
         router.push(`/products/${id}`)
-    } else {
-        router.push('/signup')
+        return
     }
+    toast.addToast("User has to be authenticated!", "error")
+    router.push("/signup")
 }
 </script>
 

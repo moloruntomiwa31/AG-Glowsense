@@ -18,7 +18,7 @@
 .spinner > img {
     width: 100%;
     height: auto;
-    animation: rotate 0.8s infinite;
+    animation: rotate 1s infinite;
 }
 @keyframes rotate {
     0% {transform: scale(1);}

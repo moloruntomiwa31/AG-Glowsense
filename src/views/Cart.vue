@@ -1,6 +1,5 @@
 <template>
-    <h1 class="text-2xl font-bold mx-4 text-[#463333]">Welcome <span class="uppercase text-red-400"> {{
-        userData.user.email }}</span></h1>
+    <h1 class="text-2xl font-bold mx-4 text-[#463333]">Welcome <span class="uppercase text-red-400"> {{ userData.user.email }}</span></h1>
     <main class="p-8" v-if="store.cartLength">
         <div>
             <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -17,8 +16,8 @@
         <div class="grid space-y-6 place-items-center" v-if="store.cart">
             <CartTable />
             <div class="flex gap-4">
-                <a href="https://wa.me/+2348113005790?text=I%20want%20to%20purchase%20some%20products" target="_blank"
-                    class="bg-red-400 p-2 shadow-xl text-white w-[100px]" @click="checkOut">Checkout</a>
+                <a :href="whatSappLink" target="_blank"
+                    class="bg-red-400 p-2 rounded-md shadow-xl text-white w-[100px]" @click="checkOut">Checkout</a>
                 <Button class="bg-black p-2 shadow-xl text-white w-[100px]" @click="clearCart">Clear Cart</Button>
             </div>
         </div>
@@ -38,6 +37,8 @@ import Button from "../components/fixed/Button.vue"
 import { useStore } from '../store/cart';
 import { useUserStore } from '../store/user';
 import { useRouter } from 'vue-router'
+import { useToast } from '../store/toast';
+const toast = useToast()
 
 const store = useStore()
 const userData = useUserStore()
@@ -48,9 +49,14 @@ const clearCart = () => {
     store.$reset()
 }
 
+const cartItems = store.grouped
+const itemNames = Object.keys(cartItems)
+const whatSappLink = `https://wa.me/+2348113005790?text=Good Day,\n%20I'm%20[YOUR_NAME],%20I%20want%20to%20purchase%20the%20following%20items:%20${itemNames.join(",")}`
+
 const checkOut = () => {
-    console.log("Success");
+    toast.addToast("Checked Out!", "success")
 }
+
 </script>
 
 <style scoped></style>

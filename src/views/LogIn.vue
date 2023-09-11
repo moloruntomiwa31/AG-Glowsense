@@ -14,12 +14,14 @@ import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useUserStore } from '../store/user';
 import { useRouter } from 'vue-router';
+import { useToast } from '../store/toast';
 import RegisterForm from '../components/fixed/RegisterForm.vue';
 
 const userData = useUserStore()
 const router = useRouter()
 const buttonText = ref('Log In')
 const error = ref('')
+const toast = useToast()
 
 
 const submitForm = (email, password) => {
@@ -30,6 +32,7 @@ const logIn = async (email, password) => {
     try {
         await userData.logIn(email, password);
         router.push("/")
+        toast.addToast("User Logged In", "success")
     } catch (e) {
         error.value = e.message.split(":")[1]
     }

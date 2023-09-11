@@ -1,8 +1,8 @@
 <template>
     <main class="min-h-[80vh] md:min-h-[50vh]">
         <div class="py-2 px-4 md:p-6 md:py-4">
-            <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg"
-                    width="32" height="32" viewBox="0 0 48 48">
+            <button @click="router.back()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                    viewBox="0 0 48 48">
                     <mask id="ipSBack0">
                         <path fill="#fff" fill-rule="evenodd" stroke="#fff" stroke-linejoin="round" stroke-width="4"
                             d="M44 40.836c-4.893-5.973-9.238-9.362-13.036-10.168c-3.797-.805-7.412-.927-10.846-.365V41L4 23.545L20.118 7v10.167c6.349.05 11.746 2.328 16.192 6.833c4.445 4.505 7.009 10.117 7.69 16.836Z"
@@ -33,12 +33,10 @@
                 <div class="flex items-center gap-4 text-white">
                     <div class="rounded-md bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
                         <h3 class="font-bold text-md">QTY</h3>
-                        <Button @click="decreaseQty"
-                            class="text-xl border-2 p-1 border-red-300">-</Button>
-                        <input v-model="quantity" type="number" min="0" class="bg-transparent outline-none text-center w-1/4"
-                            readonly>
-                        <Button @click="increaseQty"
-                            class="text-xl border-2 p-1 border-red-300">+</Button>
+                        <Button @click="decreaseQty" class="text-xl border-2 p-1 border-red-300">-</Button>
+                        <input v-model="quantity" type="number" min="0"
+                            class="bg-transparent outline-none text-center w-1/4" readonly>
+                        <Button @click="increaseQty" class="text-xl border-2 p-1 border-red-300">+</Button>
                     </div>
 
                     <!-- addtocart -->
@@ -62,8 +60,11 @@ import Button from '../components/fixed/Button.vue';
 import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useStore } from '../store/cart'
+import { useToast } from '../store/toast';
+
 
 const store = useStore()
+const toast = useToast()
 
 const route = useRoute()
 const router = useRouter()
@@ -82,9 +83,11 @@ onMounted(() => {
 
 const addToCart = async (quantity) => {
     if (quantity < 1) {
+        toast.addToast("Add quantity!", "warning")
         return
     }
     await store.addToCart(productData.value.id, quantity)
+    toast.addToast("Products added successfully!", "success")
 };
 </script>
 

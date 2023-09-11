@@ -7,7 +7,7 @@
             </div>
             <div>
                 <p>Skincare products, natural, safe and effective. Handmade with the love of our customers in mind.</p>
-                <p>&copy;2023 Copyright AG-glowsense</p>
+                <p>&copy;2023 Copyright</p>
                 <p>All Rights Reserved.</p>
             </div>
         </div>
