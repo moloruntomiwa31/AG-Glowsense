@@ -9,7 +9,7 @@
         <tr v-for='(data, name) in store.grouped' :key="data">
             <td>{{ name }}</td>
             <td>{{ data.length }}</td>
-            <td><button @click="store.deleteItem(data[0].id, name)">
+            <td><button @click="deleteItem(data)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                         <mask id="ipTDeleteTwo0">
                             <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
@@ -31,7 +31,14 @@
 
 <script setup>
 import { useStore } from '../../store/cart';
+import { useToast } from '../../store/toast';
 const store = useStore()
+const toast = useToast()
+
+const deleteItem = (data) => {
+    store.deleteItem(data[0].id)
+    toast.addToast("Item deleted!", "info")
+}
 </script>
 
 <style scoped>

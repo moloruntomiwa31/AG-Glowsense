@@ -43,13 +43,18 @@ import TheBlog from "../components/blog/TheBlog.vue";
 import PreLoader from '../components/fixed/PreLoader.vue';
 import DownButton from "../components/fixed/DownButton.vue";
 import Button from "../components/fixed/Button.vue";
+
+//composable
 import useScroll from '../scroll';
 const { scrollTosection } = useScroll()
+//preloader
 const isLoading = ref(true)
 
+//blogs boolean
 const onMain = ref(true)
 const onFav = ref(false)
 
+//methods
 const toggleFav = (blog) => {
     return blog.fav = !blog.fav
 }
@@ -62,6 +67,7 @@ const showMainOnly = () => {
     onFav.value = false;
 }
 
+//hooks
 onMounted(() => {
     setTimeout(() => { isLoading.value = false }, 2000)
 })

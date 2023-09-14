@@ -44,9 +44,13 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 import Button from '../fixed/Button.vue';
 
+//props
 defineProps(["contactDetails"])
 
+//form refrence
 const myForm = ref(null)
+
+//form validation
 const state = reactive({
     name: '',
     email: '',
@@ -62,6 +66,7 @@ const rules = {
 }
 const v$ = useVuelidate(rules, state)
 
+//sendMail
 const sendMail = async () => {
     console.log('Validation state:', v$.value);
     if (v$.value.$invalid) {

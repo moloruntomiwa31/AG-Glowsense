@@ -1,12 +1,12 @@
 import { defineStore, acceptHMRUpdate } from "pinia";
-// import { collection, addDoc } from "firebase/firestore";
-// import { doc, onSnapshot, deleteDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, query } from "firebase/firestore";
+import { doc, onSnapshot, deleteDoc } from "firebase/firestore";
+import { db, auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
-// import { db } from "../firebase";
 
 import data from "../../data/db";
 import { groupBy } from "lodash";
-// import { userStore } from "./user";
 
 export const useStore = defineStore("cartStore", {
   state: () => ({
@@ -29,27 +29,50 @@ export const useStore = defineStore("cartStore", {
     async addToCart(id, quantity) {
       const productData = data.find((d) => d.id == parseInt(id));
       quantity = parseInt(quantity);
+
+      //getCurrentUser
+      const user = auth.currentUser;
+      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+
+      //add item depending on quantity
       for (let i = 0; i < quantity; i++) {
-        // const docRef = collection(db, "cart");
-        // await addDoc(docRef, productData);
-        this.cart.push(productData);
-        console.log(this.cart);
+        await addDoc(cartCollectionRef, productData);
       }
     },
-    async deleteItem(id, name) {
-      // await deleteDoc(doc(db, "cart", id));
-      this.cart = this.cart.filter((item) => item.name !== name);
+    async deleteItem(id) {
+      const user = auth.currentUser;
+      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+      await deleteDoc(doc(cartCollectionRef, id));
     },
+    async deleteAllItems() {
+      const user = auth.currentUser;
+
+      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+      const querySnapshot = await getDocs(query(cartCollectionRef));
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+      this.cart = [];
+    }
   },
 });
 
-// onSnapshot(collection(db, "cart"), (querySnapshot) => {
-//   let cartItems = [];
-//   querySnapshot.forEach((doc) => {
-//     cartItems.push({...doc.data(), id:doc.id});
-//   });
-//   useStore().cart = cartItems;
-// });
+//get item on page load
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+    onSnapshot(cartCollectionRef, (querySnapshot) => {
+      let cartItems = [];
+      querySnapshot.forEach((doc) => {
+        cartItems.push({ ...doc.data(), id: doc.id });
+      });
+      useStore().cart = cartItems;
+    });
+  } else {
+    // If the user is not authenticated, clear the cart
+    useStore().cart = [];
+  }
+});
 
 // hmr
 if (import.meta.hot) {

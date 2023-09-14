@@ -20,7 +20,6 @@ export const useUserStore = defineStore("userStore", {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         this.user = res.user;
-        console.log(this.user);
       }
     },
     async logIn(email, password) {

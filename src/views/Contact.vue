@@ -2,13 +2,14 @@
     <PreLoader v-if="isLoading" />
     <main class="space-y-8" v-else>
         <section
-            class="relative flex flex-col-reverse md:flex-row items-center justify-around p-8 space-y-8 gap-8 md:space-y-0 min-h-[50vh] lg:min-h-[100vh]">
+            class="relative flex flex-col-reverse md:flex-row items-center justify-around p-8 space-y-6 md:space-y-0 min-h-[50vh] lg:min-h-[100vh]">
             <div class="md:w-1/2 p-4" data-aos="fade-up">
                 <img src="../assets/products/organicBodyButter.jpg" alt="AG-glowsense product image" class="rounded-md">
             </div>
             <div class="flex-col flex md:w-[600px] space-y-4 text-center items-center" data-aos="fade-up">
                 <h1 class="text-4xl font-bold text-red-400">GOT A SKINCARE QUESTION?</h1>
-                <p class="text-2xl md:text-[1.5rem]">Feel free to reach out to us via social media, our Whatsapp runs 24/7.
+                <p class="text-2xl md:text-[1.5rem]">Stay updated with our latest news, stories, and events by following us
+                    on our social media platforms.
                     You can use the links below to find us across the web.</p>
                 <Button @click="scrollTosection('faq')"
                     class="bg-red-400 p-4 w-fit text-white hover:bg-red-500 shadow-md">Check our Faqs</button>
@@ -24,7 +25,7 @@
         <section id="contact" data-aos="fade-up">
             <h1 class="text-4xl text-center font-sans">Get in Touch</h1>
             <p class="text-center text-lg text-[#4d4141]">Get your words and thoughts across, we’ll be glad to respond.</p>
-            <ContactForm :contactDetails="contactDetails"/>
+            <ContactForm :contactDetails="contactDetails" />
         </section>
     </main>
 </template>
@@ -87,5 +88,4 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

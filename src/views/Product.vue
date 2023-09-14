@@ -31,22 +31,27 @@ import CartProduct from '../components/product/CartProduct.vue';
 import Input from '../components/fixed/Input.vue';
 import { useProductStore } from '../store/productStore';
 import ProductFilter from '../components/product/ProductFilter.vue';
+//routes
 const router = useRouter()
 const route = useRoute()
 
+//getProducts
 const productStore = useProductStore()
-
+//preloader
 const isLoading = ref(true)
 
+//v-models
 const searchProduct = ref('')
 const searchPlaceholder = ref("Search Products...")
 const selectOption = ref('all')
 
+//events
 const updateOption = (option) => {
     selectOption.value = option
     router.push({ query: { product_type: option } })
 }
 
+//computed
 const filteredProducts = computed(() => {
     if (searchProduct.value || selectOption.value == 'all') {
         return productStore.products.filter((d) => d.name.toLowerCase().includes(searchProduct.value.toLowerCase()))
@@ -56,7 +61,7 @@ const filteredProducts = computed(() => {
     }
 })
 
-
+//hooks
 onMounted(() => {
     setTimeout(() => isLoading.value = false, 2000)
     selectOption.value = route.query.product_type || "all"

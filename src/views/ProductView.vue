@@ -61,26 +61,31 @@ import { useRoute, useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useStore } from '../store/cart'
 import { useToast } from '../store/toast';
+import data from '../../data/db';
 
 
 const store = useStore()
 const toast = useToast()
 
+//routes
 const route = useRoute()
 const router = useRouter()
+
+//quantity
 const quantity = ref(0)
 const increaseQty = () => { quantity.value++ }
 const decreaseQty = () => { quantity.value > 0 ? quantity.value-- : null }
 
 const { id } = route.params
-import data from '../../data/db';
 const productData = ref(null)
 
+//hook
 onMounted(() => {
     productData.value = data.find(d => d.id == parseInt(id))
     store.idOfPreviousProductPage = id
 })
 
+//addToCart
 const addToCart = async (quantity) => {
     if (quantity < 1) {
         toast.addToast("Add quantity!", "warning")

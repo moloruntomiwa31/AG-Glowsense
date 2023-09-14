@@ -1,7 +1,7 @@
 <template>
     <div class="grid place-items-center space-y-6 p-6">
-        <div id="question-wrapper" v-for="faq in faqs" :key="faq" class="w-full md:w-1/2 p-2 duration-300 cursor-pointer select-none"
-            @click="faq.open = !faq.open">
+        <div id="question-wrapper" v-for="(faq, index) in faqs" :key="faq" class="w-full md:w-1/2 p-2 duration-300 cursor-pointer select-none"
+            @click="toggleFaq(index)">
             <div id="question" class="flex items-center justify-between bg-[#FDF6F0] p-2 rounded-md ">
                 <p class="font-bold text-lg text-[#4d4141]">{{ faq.question }}</p>
                 <svg v-if='faq.open' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -27,13 +27,26 @@
 </template>
 
 <script setup>
-defineProps(["faqs"])
+import { ref } from "vue";
+const props = defineProps(["faqs"])
+
+const activeFaqIndex = ref(-1); 
+
+const toggleFaq = (index) => {
+  props.faqs[index].open = !props.faqs[index].open;
+
+  if (activeFaqIndex.value !== -1 && activeFaqIndex.value !== index) {
+    props.faqs[activeFaqIndex.value].open = false;
+  }
+
+  activeFaqIndex.value = props.faqs[index].open ? index : -1;
+};
 </script>
 
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in;
 }
 
 .fade-enter-from,

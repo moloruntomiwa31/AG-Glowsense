@@ -6,8 +6,8 @@
                 Testimonials</h1>
         </div>
         <div class="grid place-items-center grid-cols-1 md:grid-cols-3 p-8 gap-[20px]">
-            <div class="p-8 md:h-[100%] shadow space-y-4 md:space-y-0 bg-[#F6DFEB] rounded-md"
-                v-for="testimonial in testimonials" data-aos="fade-up">
+            <div class="test p-8 md:h-[100%] shadow space-y-4 md:space-y-0 rounded-md" v-for="testimonial in testimonials"
+                data-aos="fade-up">
                 <div class="flex gap-2 items-start justify-center">
                     <div class="space-y-2 text-lg">
                         <p>{{ testimonial.text }}</p>
@@ -33,7 +33,7 @@ const testimonials = reactive([
         text: "I really love the combination of the Smiling Beads Body Wash and the Softness Bliss Body Lotion on my body."
     },
     {
-        name: "Funke Akindele",
+        name: "Michael Oloruntomiwa",
         text: " My skin has not felt like this since my pre-teens! With results like this, I believe my search is over!"
     }
 ])
@@ -42,5 +42,10 @@ const testimonials = reactive([
 <style scoped>
 .grid-col {
     grid-template-columns: repeat(2, 1fr);
+}
+
+.test {
+    background-image: url('../../assets/loveGrain.png'), linear-gradient(-270deg, #fdb1b1, #F2F2F2);
+    background-position: top;
 }
 </style>

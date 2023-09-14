@@ -38,21 +38,27 @@ import { useStore } from '../store/cart';
 import { useUserStore } from '../store/user';
 import { useRouter } from 'vue-router'
 import { useToast } from '../store/toast';
+
+const router = useRouter()
 const toast = useToast()
 
+//store
 const store = useStore()
 const userData = useUserStore()
 
-const router = useRouter()
 
+//clearCart
 const clearCart = () => {
     store.$reset()
+    store.deleteAllItems()
 }
 
+//create text for whatsapp link
 const cartItems = store.grouped
 const itemNames = Object.keys(cartItems)
 const whatSappLink = `https://wa.me/+2348113005790?text=Good Day,\n%20I'm%20[YOUR_NAME],%20I%20want%20to%20purchase%20the%20following%20items:%20${itemNames.join(",")}`
 
+//checkout
 const checkOut = () => {
     toast.addToast("Checked Out!", "success")
 }
