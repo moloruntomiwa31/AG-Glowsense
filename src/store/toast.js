@@ -31,7 +31,7 @@ export const useToast = defineStore("toast", {
         this.toastText = "";
         this.bgColor = "";
         this.icon = "";
-      }, 3000);
+      }, 3500);
     },
   },
 });

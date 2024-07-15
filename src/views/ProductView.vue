@@ -34,7 +34,7 @@
                     <div class="rounded-md bg-[#463333] p-2 flex items-center justify-around md:w-[50%]">
                         <h3 class="font-bold text-md">QTY</h3>
                         <Button @click="decreaseQty" class="text-xl border-2 p-1 border-red-300">-</Button>
-                        <input v-model="quantity" type="number" min="0"
+                        <input v-model="quantity" type="number" min="1"
                             class="bg-transparent outline-none text-center w-1/4" readonly>
                         <Button @click="increaseQty" class="text-xl border-2 p-1 border-red-300">+</Button>
                     </div>
@@ -72,9 +72,9 @@ const route = useRoute()
 const router = useRouter()
 
 //quantity
-const quantity = ref(0)
+const quantity = ref(1)
 const increaseQty = () => { quantity.value++ }
-const decreaseQty = () => { quantity.value > 0 ? quantity.value-- : null }
+const decreaseQty = () => { quantity.value > 1 ? quantity.value-- : null }
 
 const { id } = route.params
 const productData = ref(null)

@@ -96,6 +96,10 @@ const router = createRouter({
   ],
 });
 
+router.afterEach(() => {
+  window.scrollTo(0, 0);
+});
+
 router.beforeEach((to) => {
   document.title = to.meta?.title ?? "AG-GLOWSENSE";
 });

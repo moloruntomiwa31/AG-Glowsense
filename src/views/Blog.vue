@@ -16,8 +16,7 @@
             </div>
 
             <!-- blogs -->
-            <TheBlog :onMain="onMain" :onFav="onFav" @toggleFav="toggleFav" @showFavOnly="showFavOnly"
-                @showMainOnly="showMainOnly"/>
+            <TheBlog />
 
             <!-- newsletter -->
             <section class="w-full grid place-items-center">
@@ -28,7 +27,7 @@
                     <div class="flex justify-center space-x-2 w-full">
                         <input type="email"
                             class="rounded-md border-red-400 border-2 p-2 outline-none bg-transparent placeholder:text-white text-white"
-                            placeholder="johdoe@gmail.com">
+                            placeholder="example@gmail.com">
                         <Button class="shadow p-[0.36rem] text-white bg-black hover:opacity-80">Join</Button>
                     </div>
                 </main>
@@ -49,23 +48,6 @@ import useScroll from '../scroll';
 const { scrollTosection } = useScroll()
 //preloader
 const isLoading = ref(true)
-
-//blogs boolean
-const onMain = ref(true)
-const onFav = ref(false)
-
-//methods
-const toggleFav = (blog) => {
-    return blog.fav = !blog.fav
-}
-const showFavOnly = () => {
-    onMain.value = false;
-    onFav.value = true;
-}
-const showMainOnly = () => {
-    onMain.value = true;
-    onFav.value = false;
-}
 
 //hooks
 onMounted(() => {

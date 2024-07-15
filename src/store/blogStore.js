@@ -1,7 +1,7 @@
-import { defineStore } from "pinia";
-import blogs from "../../data/blog";
+import { defineStore, acceptHMRUpdate } from "pinia";
+import blogs from "../../data/blog.js";
 
-export const useBlog = defineStore("useBlog", {
+export const useBlog = defineStore("blogStore", {
   state: () => ({
     blogs: blogs,
   }),
@@ -11,3 +11,8 @@ export const useBlog = defineStore("useBlog", {
     },
   },
 });
+
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useBlog, import.meta.hot));
+}
+
