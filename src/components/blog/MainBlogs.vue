@@ -23,7 +23,7 @@
       </div>
       <div class="space-y-2">
         <RouterLink
-          :to="`/blogs/${blog.id * 4780}`"
+          :to="`/blogs/${blog.id}`"
           class="font-bold text-lg hover:underline duration-300"
           >{{ blog.title }}
         </RouterLink>
