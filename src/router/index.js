@@ -93,6 +93,14 @@ const router = createRouter({
         title: "AG-GLOWSENSE | BLOGS",
       },
     },
+    {
+      path: "/chat",
+      name: "chat",
+      component: () => import("../views/Chat.vue"),
+      meta: {
+        title: "AG-GLOWSENSE | CHAT",
+      },
+    },
   ],
 });
 
