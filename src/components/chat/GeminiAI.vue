@@ -1,12 +1,16 @@
 <template>
-  <div class="flex flex-col h-[80vh]">
-    <div class="flex-grow overflow-y-auto p-8">
-      <h1 v-if="messages.length === 0" class="text-xl">
-        Hello I'm your AI Chat Assistant, ask me anything, I'm happy ro help
+  <div class="flex flex-col h-[75vh] md:h-[80vh]">
+    <div class="flex-grow overflow-y-auto p-4">
+      <h1 v-if="messages.length === 0" class="text-2xl">
+        Hello I'm your AI Chat Assistant, ask me anything, I'm happy to help...
       </h1>
       <div v-else class="pb-4 text-2xl font-bold text-center">Let's chat</div>
       <TransitionGroup name="message" tag="div">
-        <Messages :messages="messages" />
+        <Messages
+          :message="message"
+          v-for="message in messages"
+          :key="message.content"
+        />
       </TransitionGroup>
     </div>
     <form
@@ -32,7 +36,7 @@
 <script setup>
 import { ref } from "vue";
 import { useGetGenerativeModelGP } from "../../composables/useGetGenerativeModelGP.js";
-import Button from "../fixed/Button.vue"
+import Button from "../fixed/Button.vue";
 import Messages from "./Messages.vue";
 
 const inputQuestion = ref("");
@@ -57,5 +61,4 @@ const fetchAnswer = async () => {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
