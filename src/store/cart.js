@@ -4,7 +4,6 @@ import { doc, onSnapshot, deleteDoc } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-
 import data from "../../data/db";
 import { groupBy } from "lodash";
 
@@ -53,7 +52,7 @@ export const useStore = defineStore("cartStore", {
         await deleteDoc(doc.ref);
       });
       this.cart = [];
-    }
+    },
   },
 });
 
