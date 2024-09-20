@@ -21,7 +21,7 @@
       </div>
       <DownButton
         @scroll="scrollTosection('features')"
-        class="hidden md:block border-2 border-white p-2 absolute bottom-[6rem] left-[50%] hover:bg-white duration-200"
+        class="hidden md:block border-2 border-white p-2 absolute md:bottom-[12rem] lg:bottom-24 left-[50%] hover:bg-white duration-200"
       />
     </section>
 

@@ -1,20 +1,20 @@
 <template>
-    <header class="mainStyles items-center text-white w-full sticky top-0 pb-8 z-index">
+    <header class="mainStyles items-center text-white min-w-full sticky top-0 pb-8 z-index">
         <div class="logo flex items-center cursor-pointer" @click="router.push('/')">
             <img class="w-10" src="../../assets/NoBackground.png" alt="AG-Glowsense">
-            <h1 class="text-sm font-bold uppercase font-serif whitespace-nowrap">Ag-glowsense</h1>
+            <h1 class="text-[0.75rem] md:text-sm font-bold uppercase font-serif whitespace-nowrap">Ag-glowsense</h1>
         </div>
         <!-- mobile -->
 
         <!-- desktop view -->
-        <nav class="hidden md:flex  justify-between items-center">
+        <nav class="hidden lg:flex  justify-between items-center">
             <RouterLink class="linkStyles" active-class="active" to="/">Home</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/about">About</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/products">Products</RouterLink>
             <RouterLink class="linkStyles" active-class="active" to="/blogs">Blogs</RouterLink>
         </nav>
         <template v-if="userData.userSet">
-            <div class="flex space-x-4 md:space-x-6 items-center" v-if="userData.user">
+            <div class="flex space-x-3 md:space-x-6 items-center" v-if="userData.user">
                 <RouterLink to="/cart" class="flex flex-col relative hover:text-red-300 duration-150" active-class="active">
                     <div>
                         <img src="../../assets/cart.svg" alt="Cart">
@@ -40,7 +40,7 @@
     </header>
     <!-- mobile -->
 
-    <div class="fixed bottom-0 w-full flex justify-around items-center p-4 bg-[#463333] text-white md:hidden z-index">
+    <div class="fixed bottom-0 w-full flex justify-around items-center p-4 bg-[#463333] text-white lg:hidden z-index">
         <RouterLink class="grid place-items-center" v-for="data in mobileNav" :key="data" active-class="activeTab"
             :to="data.link">
             <img :src="data.image" alt="Icon">

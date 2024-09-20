@@ -39,10 +39,6 @@ import { shallowRef } from "vue";
 import MainBlogs from "./MainBlogs.vue";
 import FavBlogs from "./FavBlogs.vue";
 const activeComponent = shallowRef(MainBlogs);
-console.log(activeComponent.value);
-import { useBlog } from "../../store/blogStore";
-const blogStore = useBlog();
-console.log(blogStore.blogs);
 </script>
 
 <style scoped>

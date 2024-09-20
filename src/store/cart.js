@@ -6,54 +6,57 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import data from "../../data/db";
 import { groupBy } from "lodash";
+import { ref, computed } from "vue";
 
-export const useStore = defineStore("cartStore", {
-  state: () => ({
-    cart: [],
-    pricesOfData: [],
-    idOfPreviousProductPage: null,
-  }),
-  getters: {
-    grouped: (state) => groupBy(state.cart, (cartItems) => cartItems.name),
-    cartLength: (state) => state.cart.length,
-    totalPriceOfItems() {
-      let totalPrice = 0;
-      this.cart.forEach((p) => {
-        totalPrice += parseInt(p.price);
-      });
-      return totalPrice;
-    },
-  },
-  actions: {
-    async addToCart(id, quantity) {
-      const productData = data.find((d) => d.id == parseInt(id));
-      quantity = parseInt(quantity);
+export const useStore = defineStore("cartStore", () => {
+  const cart = ref([]);
+  const pricesOfData = ref([]);
+  const idOfPreviousProductPage = ref(null);
+  //getters
+  const grouped = computed(() =>
+    groupBy(cart.value, (cartItems) => cartItems.name)
+  );
+  const cartLength = computed(() => cart.value.length);
+  const totalPriceOfItems = computed(() => {
+    return cart.value.reduce((acc, p) => acc + parseInt(p.price), 0);
+  });
+  //actions
+  const addToCart = async (id, quantity) => {
+    const productData = data.find((d) => d.id == parseInt(id));
+    quantity = parseInt(quantity);
 
-      //getCurrentUser
-      const user = auth.currentUser;
-      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
-
-      //add item depending on quantity
-      for (let i = 0; i < quantity; i++) {
-        await addDoc(cartCollectionRef, productData);
-      }
-    },
-    async deleteItem(id) {
-      const user = auth.currentUser;
-      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
-      await deleteDoc(doc(cartCollectionRef, id));
-    },
-    async deleteAllItems() {
-      const user = auth.currentUser;
-
-      const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
-      const querySnapshot = await getDocs(query(cartCollectionRef));
-      querySnapshot.forEach(async (doc) => {
-        await deleteDoc(doc.ref);
-      });
-      this.cart = [];
-    },
-  },
+    //getCurrentUser
+    const user = auth.currentUser;
+    const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+    for (let i = 0; i < quantity; i++) {
+      await addDoc(cartCollectionRef, productData);
+    }
+  };
+  const deleteItem = async (id) => {
+    const user = auth.currentUser;
+    const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+    await deleteDoc(doc(cartCollectionRef, id));
+  };
+  const deleteAllItems = async () => {
+    const user = auth.currentUser;
+    const cartCollectionRef = collection(db, `users/${user.uid}/cart`);
+    const querySnapshot = await getDocs(query(cartCollectionRef));
+    querySnapshot.forEach(async (doc) => {
+      await deleteDoc(doc.ref);
+    });
+    cart.value = [];
+  };
+  return {
+    cart,
+    pricesOfData,
+    idOfPreviousProductPage,
+    grouped,
+    cartLength,
+    totalPriceOfItems,
+    addToCart,
+    deleteItem,
+    deleteAllItems,
+  };
 });
 
 //get item on page load

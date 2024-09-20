@@ -21,13 +21,13 @@
             <!-- newsletter -->
             <section class="w-full grid place-items-center">
                 <main class="bg-[#463333] space-y-8 my-6 p-20 flex justify-center items-center flex-col md:w-1/2 md:rounded-md" data-aos="zoom-in">
-                    <h1 class="font-bold text-5xl text-white text-center"><span
+                    <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl text-white text-center"><span
                             class="text-red-300 whitespace-nowrap">Join</span> Our <span
                             class="text-red-300">NewsLetter!!</span></h1>
                     <div class="flex justify-center space-x-2 w-full">
                         <input type="email"
-                            class="rounded-md border-red-400 border-2 p-2 outline-none bg-transparent placeholder:text-white text-white"
-                            placeholder="example@gmail.com">
+                            class="rounded-md border-red-200 focus:border-red-400 transition border-2 p-2 outline-none bg-transparent placeholder:text-white text-white flex-1"
+                            placeholder="joinus@gmail.com">
                         <Button class="shadow p-[0.36rem] text-white bg-black hover:opacity-80">Join</Button>
                     </div>
                 </main>
