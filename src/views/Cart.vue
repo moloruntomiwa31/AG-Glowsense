@@ -104,21 +104,11 @@ const onCancelledPayment = () => {
 const cartStore = useStore();
 const userData = useUserStore();
 const { user } = storeToRefs(userData);
-const { cartLength, totalPriceOfItems, cart, grouped } = storeToRefs(cartStore);
+const { cartLength, totalPriceOfItems, cart } = storeToRefs(cartStore);
 
 //clearCart
 const clearCart = () => {
   store.$reset();
   store.deleteAllItems();
 };
-
-//create text for whatsapp link
-const cartItems = grouped;
-const itemNames = Object.keys(cartItems);
-const whatSappLink = `https://wa.me/+2348113005790?text=Good Day,\n%20I'm%20[YOUR_NAME],%20I%20want%20to%20purchase%20the%20following%20items:%20${itemNames.join(
-  ","
-)}`;
-
 </script>
-
-<style scoped></style>
