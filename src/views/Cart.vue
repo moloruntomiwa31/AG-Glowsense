@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-2xl font-bold mx-4 text-[#463333]">
     Welcome
-    <span class="uppercase text-red-400"> {{ user.email }}</span>
+    <span class="capitalize text-red-400"> {{ user.first_name }}</span>
   </h1>
   <main class="p-8" v-if="cartLength">
     <div>
