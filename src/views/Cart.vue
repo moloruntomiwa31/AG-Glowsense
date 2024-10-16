@@ -1,9 +1,9 @@
 <template>
   <h1 class="text-2xl font-bold mx-4 text-[#463333]">
     Welcome
-    <span class="uppercase text-red-400"> {{ userData.user.email }}</span>
+    <span class="uppercase text-red-400"> {{ user.email }}</span>
   </h1>
-  <main class="p-8" v-if="store.cartLength">
+  <main class="p-8" v-if="cartLength">
     <div>
       <button @click="router.back()">
         <svg
@@ -30,15 +30,13 @@
     <h1 class="text-[2rem] font-bold text-center my-4 text-[#463333]">
       AG Glowsense Basket
     </h1>
-    <div class="grid space-y-6 place-items-center" v-if="store.cart">
+    <div class="grid space-y-6 place-items-center" v-if="cart">
       <CartTable />
       <div class="flex gap-4">
-        <a
-          :href="whatSappLink"
-          target="_blank"
-          class="bg-red-400 p-2 rounded-md shadow-xl text-white w-[100px]"
+        <Button
+          class="bg-green-500 p-2 shadow-xl text-white w-[100px]"
           @click="checkOut"
-          >Checkout</a
+          >Checkout</Button
         >
         <Button
           class="bg-black p-2 shadow-xl text-white w-[100px]"
@@ -67,35 +65,44 @@
 <script setup>
 import CartTable from "../components/cart/CartTable.vue";
 import Button from "../components/fixed/Button.vue";
+import Paystack from "@paystack/inline-js";
 import { useStore } from "../store/cart";
 import { useUserStore } from "../store/user";
 import { useRouter } from "vue-router";
 import { useToast } from "../store/toast";
+import { storeToRefs } from "pinia";
 
 const router = useRouter();
 const toast = useToast();
+const popup = new Paystack();
 
 //store
-const store = useStore();
+const cartStore = useStore();
 const userData = useUserStore();
+const { user } = storeToRefs(userData);
+const { cartLength, totalPriceOfItems, cart } = storeToRefs(cartStore);
 
 //clearCart
 const clearCart = () => {
-  store.$reset();
-  store.deleteAllItems();
+  cartStore.$reset();
+  cartStore.deleteAllItems();
 };
-
-//create text for whatsapp link
-const cartItems = store.grouped;
-const itemNames = Object.keys(cartItems);
-const whatSappLink = `https://wa.me/+2348113005790?text=Good Day,\n%20I'm%20[YOUR_NAME],%20I%20want%20to%20purchase%20the%20following%20items:%20${itemNames.join(
-  ","
-)}`;
+console.log(user.value)
 
 //checkout
 const checkOut = () => {
-  toast.addToast("Checked Out!", "success");
+  popup.checkout({
+    key: "pk_test_19169c46ce886643a7ebb974a0571fc1400ca285",
+    email: "sample@email.com",
+    amount: totalPriceOfItems.value,
+    currency: "NGN",
+    onSuccess: (transaction) => {
+      console.log(transaction);
+      toast.addToast("Checked Out!", "success");
+    },
+    onError: (error) => {
+      toast.addToast(error.message, "error");
+    },
+  });
 };
 </script>
-
-<style scoped></style>
