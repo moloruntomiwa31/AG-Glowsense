@@ -97,7 +97,6 @@ const firstName = ref("");
 
 //clearCart
 const clearCart = () => {
-  cartStore.$reset();
   cartStore.deleteAllItems();
 };
 
@@ -119,7 +118,7 @@ const checkOut = () => {
       toast.addToast("Cancelled", "info");
     },
     onSuccess: (transaction) => {
-      toast.addToast("Checked Out!", "success");
+      toast.addToast("Payment Suceesful!", "success");
     },
     onError: (error) => {
       toast.addToast(error.message, "error");
