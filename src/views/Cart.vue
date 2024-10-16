@@ -1,8 +1,17 @@
 <template>
-  <h1 class="text-2xl font-bold mx-4 text-[#463333]">
-    Welcome
-    <span class="capitalize text-red-400"> {{ user.first_name }}</span>
-  </h1>
+  <div class="flex justify-between items-center px-6 pt-2">
+    <h1 class="text-2xl font-bold mx-4 text-[#463333]">
+      Welcome,
+      <span class="capitalize text-red-400">{{ firstName }}</span>
+    </h1>
+    <div v-if="photoUrl" class="border-2 border-red-400 rounded-full p-1">
+      <img
+        :src="photoUrl"
+        :alt="firstName"
+        class="w-12 h-12 rounded-full object-cover shadow"
+      />
+    </div>
+  </div>
   <main class="p-8" v-if="cartLength">
     <div>
       <button @click="router.back()">
@@ -63,6 +72,7 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
 import CartTable from "../components/cart/CartTable.vue";
 import Button from "../components/fixed/Button.vue";
 import Paystack from "@paystack/inline-js";
@@ -82,22 +92,33 @@ const userData = useUserStore();
 const { user } = storeToRefs(userData);
 const { cartLength, totalPriceOfItems, cart } = storeToRefs(cartStore);
 
+const photoUrl = ref("");
+const firstName = ref("");
+
 //clearCart
 const clearCart = () => {
   cartStore.$reset();
   cartStore.deleteAllItems();
 };
-console.log(user.value)
 
 //checkout
 const checkOut = () => {
   popup.checkout({
     key: "pk_test_19169c46ce886643a7ebb974a0571fc1400ca285",
-    email: "sample@email.com",
-    amount: totalPriceOfItems.value,
+    email: user.value.email,
+    amount: Math.round(totalPriceOfItems.value * 100),
     currency: "NGN",
+    firstName: user.value.first_name,
+    lastName: user.value.last_name,
+    phone: user.value.phone_number || "",
+    channels: ["card", "bank", "ussd", "qr", "mobile_money", "bank_transfer"],
+    onLoad: (response) => {
+      console.log("Load: ");
+    },
+    onCancel: () => {
+      toast.addToast("Cancelled", "info");
+    },
     onSuccess: (transaction) => {
-      console.log(transaction);
       toast.addToast("Checked Out!", "success");
     },
     onError: (error) => {
@@ -105,4 +126,9 @@ const checkOut = () => {
     },
   });
 };
+
+onMounted(() => {
+  photoUrl.value = user.value.photoURL;
+  firstName.value = user.value.first_name;
+});
 </script>

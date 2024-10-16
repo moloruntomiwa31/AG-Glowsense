@@ -131,6 +131,6 @@ const photos = [icon1, icon2, icon4, icon5];
   object-fit: cover;
 }
 :global(.swiper-pagination-bullet-active) {
-  background-color: #c44c62 !important;
+  background-color: #f87171 !important;
 }
 </style>

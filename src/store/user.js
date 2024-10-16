@@ -9,12 +9,13 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { ref } from "vue";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 
 export const useUserStore = defineStore("userStore", () => {
   const user = ref(null);
   const userSet = ref(false);
 
+  // Authenticate users and store additional information
   const signUp = async (email, password, firstName, lastName, phoneNumber) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     if (res) {
@@ -44,16 +45,22 @@ export const useUserStore = defineStore("userStore", () => {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    const res = await signInWithPopup(auth, provider);
-    const user = res.user;
-    user.value = user;
-    // User is signed in via Google.
-    // Store additional user information
-    await setDoc(doc(db, "users", user.uid), {
-      first_name: user.displayName.split(" ")[0],
-      last_name: user.displayName.split(" ")[1],
-      email: user.email,
-    });
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      // Store additional user information if needed
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      if (!userDoc.exists()) {
+        await setDoc(doc(db, "users", user.uid), {
+          first_name: user.displayName.split(" ")[0],
+          last_name: user.displayName.split(" ")[1],
+          email: user.email,
+        });
+      }
+      user.value = { ...user, ...userDoc.data() };
+    } catch (e) {
+      console.error("Error signing in with Google: ", e);
+    }
   };
 
   const logOut = async () => {
@@ -61,7 +68,7 @@ export const useUserStore = defineStore("userStore", () => {
     user.value = null;
   };
 
-  return { user, userSet, signUp, logIn, logOut, signInWithGoogle };
+  return { user, userSet, signUp, logIn, signInWithGoogle, logOut };
 });
 
 // Get user on page load
@@ -79,6 +86,7 @@ onAuthStateChanged(auth, async (user) => {
   useUserStore().userSet = true;
 });
 
+// HMR
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));
 }
